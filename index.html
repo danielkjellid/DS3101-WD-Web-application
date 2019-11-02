@@ -15,14 +15,14 @@
         </header>
         <main class="container">
             <section>
-                <h1 class="section-title">Pågående saker</h1>
-                <div class="grid ongoing">
+                <h1 class="section-title">Aktive saker</h1>
+                <div id="not-solved" class="grid not-solved">
                     <!-- cards created by DOM -->
                 </div>
             </section>
             <section>
                 <h1 class="section-title">Fullførte saker</h1>
-                <div class="grid upcoming">
+                <div id="solved" class="grid solved">
                     <!-- cards created by DOM -->
                 </div>
             </section>
@@ -30,6 +30,7 @@
         <footer class="footer">
             <!-- footer created by DOM -->
         </footer>
+        <script type="module" defer src="template-loader.js"></script>
         <script type="module" defer src="init.js"></script>
         <script src="scripts/utilities/menuToggle.js"></script>
     </body>
