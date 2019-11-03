@@ -9,14 +9,10 @@ class Utility {
 }
 
 /* function for getting address from the address array, and format it */
-const formatAddress = (object) => {
-    return '' + object.streetname + ' ' + object.streetnumber + ', ' + object.place;
-}
+const formatAddress = (object) => { return '' + object.streetname + ' ' + object.streetnumber + ', ' + object.place; }
 
 /* function for adding '0' before int if the int is singular, so that it becomes 01:00 isntead of 1:1 */
-const formatDateTime = (variable) => {
-    return ('0' + variable).slice(-2);
-}
+const formatDateTime = (variable) => { return ('0' + variable).slice(-2); }
 
 /* function for formatting dates */
 const formatDate = (date) => {

@@ -94,9 +94,30 @@ class Card {
             return 'case-card-content-status-positive'
         }
     }
+
+    /* temporary storage function is used to create a temporary object in local storage. */
+    /* this is to be able to grab specific card details when editing card in edit.html */
+    createTempStorage() {
+
+        /* create new card object */
+        let card = new Card(this.getId(), this.getStatus(), this.getTitle(), this.getType(), this.getImgUrl(), this.getAlt(), this.getGradedLevel(), this.getDate(), this.getAddress());
+        
+        /* check if card object already exists in localstorage */
+        if (localStorage.getItem('card') === null) {
+
+            /* if it does not exist, create a new one */
+            localStorage.setItem('card', JSON.stringify(card));
+        } else {
+            /* if it does exist, remove the previous one, and replace it with the new one */
+            /* this is to overwrite the card object if a different card is clicked while a previous card is stored */
+            localStorage.removeItem('card');
+            localStorage.setItem('card', JSON.stringify(card));
+        }
+    }
 }
 
 function generateCard(card, container) {
+
     /* card structure, formatted for readability */
     let generateCard = `<article class="case-card">
                             <div>
@@ -139,12 +160,17 @@ function generateCard(card, container) {
                             </div>
                             <div class="case-card-action">
                                 <!-- Ivaretar UU ved hjelp av hvit farge mot mørk grå bakgrunn på ikon -->
-                                <a href="$" class="case-card-action-btn">Se detaljer</a> 
+                                <a id="card-${card.getId()}" href="#" class="case-card-action-btn">Se detaljer</a> 
                             </div> 
                         </article>`;
 
     /* append cards to 'container' */
     $(container).append(generateCard);
+
+    /* event handler for clicking "Se detaljer" button on each card */
+    $('#card-' + card.getId()).on('click', function() {
+        card.createTempStorage();
+    })
 }
 
 export default Card;
