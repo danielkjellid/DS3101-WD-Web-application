@@ -13,15 +13,24 @@
         <header class="header">
             <!-- navbar created by DOM -->
         </header>
-        <main class="container">
-            <section>
-                <h1 class="section-title">Aktive saker</h1>
+        <main>
+            <div class="banner">
+
+            </div>
+            <section class="container">
+                <div class="flex items-center">
+                    <h1 class="section-title">Aktive saker</h1>
+                    <span class="section-count count-not-solved"><!-- count created by DOM --></span>
+                </div>
                 <div id="not-solved" class="grid not-solved">
                     <!-- cards created by DOM -->
                 </div>
             </section>
-            <section>
-                <h1 class="section-title">Fullførte saker</h1>
+            <section class="container">
+                <div class="flex items-center">
+                    <h1 class="section-title">Fullførte saker</h1>
+                    <span class="section-count count-solved"><!-- count created by DOM --></span>
+                </div>
                 <div id="solved" class="grid solved">
                     <!-- cards created by DOM -->
                 </div>

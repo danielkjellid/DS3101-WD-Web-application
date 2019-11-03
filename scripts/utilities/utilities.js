@@ -37,5 +37,7 @@ const formatDate = (date) => {
 
 }
 
+const getAndParse = (key) => { return JSON.parse(localStorage.getItem(key));}
+
 export default Utility;
-export { formatAddress, formatDate }
+export { formatAddress, formatDate, getAndParse }
