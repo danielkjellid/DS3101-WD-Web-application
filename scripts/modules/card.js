@@ -191,7 +191,7 @@ class Card {
                                 </div>
                                 <div class="case-card-action">
                                     <!-- Ivaretar UU ved hjelp av hvit farge mot mørk grå bakgrunn på ikon -->
-                                    <a id="card-${this.getId()}" href="#" class="case-card-action-btn">Se detaljer</a> 
+                                    <a id="card-${this.getId()}" href="edit.html" class="case-card-action-btn">Se detaljer</a> 
                                 </div> 
                             </article>`;
 
