@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>PST - Edit</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="scripts/jquery.js"></script>
+    </head>
+    <body class="edit">
+        <header class="header">
+            <!-- navbar created by DOM -->
+        </header>
+        <main class="main">
+            <div class="breadcrumbs flex items-center">
+                <a href="#" class="flex items-center">
+                    <svg class="breadcrumbs-icn" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <circle id="Oval" fill="#000000" cx="10" cy="10" r="10"></circle>
+                        <path d="M11.7,13.3 C11.9985902,13.6981203 11.9589987,14.2552148 11.6071068,14.6071068 C11.2552148,14.9589987 10.6981203,14.9985902 10.3,14.7 L6.3,10.7 C5.91885712,10.3111565 5.91885712,9.68884351 6.3,9.3 L10.3,5.3 C10.6981203,5.00140977 11.2552148,5.04100126 11.6071068,5.39289322 C11.9589987,5.74478517 11.9985902,6.3018797 11.7,6.7 L8.42,10 L11.72,13.3 L11.7,13.3 Z" id="Path" fill="#FFFFFF"></path>
+                    </svg>
+                </a>
+                <span class="breadcrumbs-previous">Saker</span>
+                <span class="breadcrumbs-current">→</span>
+                <span class="breadcrumbs-current">Rediger "Tittle som fenger"</span>
+            </div>
+            <section class="container">
+                <div class="edit-form">
+                    <div>
+                        <img class="edit-form-img" src="./img/types/livvaktarbeid.jpg" alt="alt">
+                    </div>
+                    <form class="edit-form-form" action="">
+                        <div class="form-section basic-section">
+                            <div class="form-group type-group">
+                                <label for="type-select">Kategori</label>
+                                <select class="w-1" id="type-select">
+                                    <option selected="selected">Test</option>
+                                    <option>test</option>
+                                </select>
+                            </div>
+                            <div class="form-group title-group">
+                                <label for="title">Tittel</label>
+                                <input class="w-1" type="text" id="title" placeholder="Tittel">
+                            </div>
+                            <div class="form-group desc-group">
+                                <label for="desc">Beskrivelse</label>
+                                <textarea class="w-1" id="desc" placeholder="Tets 1"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-section address-section">
+                            <div class="form-group street-group">
+                                <div class="flex w-1">
+                                    <div class="w-4/5 mr-2">
+                                        <label for="streetname">Gate</label>
+                                        <input class="w-1" type="text" id="streetname" placeholder="test1">
+                                    </div>
+                                    <div class="w-1/5">
+                                        <label for="streetnumber">Nr</label>
+                                        <input class="w-1" type="text" id="streetnumber" placeholder="test1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group zipplace-group">
+                                <div class="flex w-1">
+                                    <div class="w-1/2 mr-2">
+                                        <label for="zip">Postkode</label>
+                                        <input class="w-1" type="text" id="zip" placeholder="test1">
+                                    </div>
+                                    <div class="w-1/2">
+                                        <label for="place">Sted</label>
+                                        <input class="w-1" type="text" id="place" placeholder="test1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-section misc-section">
+                            <div class="form-group grade-group">
+                                <label for="graded-level">Graderingsnivå</label>
+                                <select id="graded-level" class="w-1">
+                                    <option selected="selected">Test</option>
+                                    <option>test</option>
+                                </select>
+                            </div>
+                            <div class="form-group status-group">
+                                <label for="status">Status</label>
+                                <select id="status" class="w-1">
+                                    <option selected="selected">Ikke løst</option>
+                                    <option>test</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="edit-form-footer">
+                            <button class="edit-form-submit-btn">Lagre</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <!-- footer created by DOM -->
+        </footer>
+        <script type="module" defer src="template-loader.js"></script>
+        <script type="module" defer src="init.js"></script>
+        <script src="scripts/utilities/menuToggle.js"></script>
+    </body>
+</html>

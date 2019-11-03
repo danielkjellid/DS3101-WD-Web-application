@@ -5,8 +5,16 @@ import Card from './scripts/modules/card.js';
 
 //localStorage.clear();
 
+/*
+* Global variables
+*/
 const utility = new Utility('utility');
 
+
+
+/*
+* Gobal arrays and object literals
+*/
 /* types of activities */
 const types = [
     {
@@ -219,6 +227,11 @@ const cards = [
     },   
 ];
 
+
+
+/*
+* Initialization of code
+*/
 /* conditional check to check if browser supports localstorage */
 if (typeof(Storage) !== 'undefined') {
     
@@ -229,17 +242,18 @@ if (typeof(Storage) !== 'undefined') {
         localStorage.setItem('cards', JSON.stringify(cards));
     }
 
-    /* anonymous arrow function to group code */
-    (() => {
+    /* conditional check to only run block of code on specific pages */
+    if($('body.overview')[0]) {
+        
         /* function for getting localstorage key, and parsing it to object literal */
         let getCards = utility.getAndParse('cards');
 
         /* for each loop to loop through each card object */
         getCards.forEach(function(item) {
-            
+
             /* add each card in the for loop to the card constructor */
             let card = new Card(item.id, item.status, item.title, item.type, item.imgUrl, item.alt, item.graded, item.date, item.address);
-            
+
             /* conditional check to append the cards correctly */
             if (item.status == 'Ikke løst') {
                 card.generateCard('div.not-solved');
@@ -248,10 +262,13 @@ if (typeof(Storage) !== 'undefined') {
                 card.generateCard('div.solved');
             }
         });
-    })();
+        
+    } else if ($('body.edit')){
+        //do edit code
+    }
+
 
 } else {
     /* tell user to change or upgrade browser if support for localstorage is absent */
     alert('Browser does not support local storage. Please upgrade or change browser.');
 }
-
