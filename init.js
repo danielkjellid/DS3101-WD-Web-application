@@ -1,9 +1,11 @@
 
-import { formatAddress, formatDate, getAndParse } from './scripts/utilities/utilities.js';
+import Utility from './scripts/utilities/utilities.js';
 import Type from './scripts/modules/type.js';
-import Card, { generateCard } from './scripts/modules/card.js';
+import Card from './scripts/modules/card.js';
 
 //localStorage.clear();
+
+const utility = new Utility('utility');
 
 /* types of activities */
 const types = [
@@ -61,8 +63,8 @@ const cards = [
         imgUrl: types[2].imgUrl,
         alt: types[2].alt,
         graded: gradedLevels[0], 
-        date: formatDate(new Date(2019, 10, 2, 18, 10)), 
-        address: formatAddress(
+        date: utility.formatDate(new Date(2019, 10, 2, 18, 10)), 
+        address: utility.formatAddress(
             { 
                 streetname: 'Hausmansgate', 
                 streetnumber: '21', 
@@ -79,8 +81,8 @@ const cards = [
         imgUrl: types[0].imgUrl,
         alt: types[0].alt,
         graded: gradedLevels[1], 
-        date: formatDate(new Date(2019, 10, 2, 18, 10)), 
-        address: formatAddress(
+        date: utility.formatDate(new Date(2019, 10, 2, 18, 10)), 
+        address: utility.formatAddress(
             { 
                 streetname: 'Solheimveien', 
                 streetnumber: '3', 
@@ -97,8 +99,8 @@ const cards = [
         imgUrl: types[3].imgUrl,
         alt: types[3].alt,
         graded: gradedLevels[0], 
-        date: formatDate(new Date(2019, 10, 2, 18, 10)), 
-        address: formatAddress(
+        date: utility.formatDate(new Date(2019, 10, 2, 18, 10)), 
+        address: utility.formatAddress(
             { 
                 streetname: 'Harald Løvenskiolds vei',
                 streetnumber: '36',
@@ -115,8 +117,8 @@ const cards = [
         imgUrl: types[1].imgUrl,
         alt: types[1].alt,
         graded: gradedLevels[2], 
-        date: formatDate(new Date(2019, 10, 2, 18, 10)), 
-        address: formatAddress(
+        date: utility.formatDate(new Date(2019, 10, 2, 18, 10)), 
+        address: utility.formatAddress(
             { 
                 streetname: 'Lislebyveien',
                 streetnumber: '114',
@@ -133,8 +135,8 @@ const cards = [
         imgUrl: types[4].imgUrl,
         alt: types[4].alt,
         graded: gradedLevels[2], 
-        date: formatDate(new Date(2019, 10, 2, 18, 10)), 
-        address: formatAddress(
+        date: utility.formatDate(new Date(2019, 10, 2, 18, 10)), 
+        address: utility.formatAddress(
             { 
                 streetname: 'Kringlene',
                 streetnumber: '12',
@@ -151,8 +153,8 @@ const cards = [
         imgUrl: types[5].imgUrl,
         alt: types[5].alt,
         graded: gradedLevels[0], 
-        date: formatDate(new Date(2019, 10, 2, 18, 10)), 
-        address: formatAddress(
+        date: utility.formatDate(new Date(2019, 10, 2, 18, 10)), 
+        address: utility.formatAddress(
             { 
                 streetname: 'Porsveien',
                 streetnumber: '5',
@@ -169,8 +171,8 @@ const cards = [
         imgUrl: types[0].imgUrl,
         alt: types[0].alt,
         graded: gradedLevels[1], 
-        date: formatDate(new Date(2019, 10, 2, 18, 10)), 
-        address: formatAddress(
+        date: utility.formatDate(new Date(2019, 10, 2, 18, 10)), 
+        address: utility.formatAddress(
             { 
                 streetname: 'Gardvegen',
                 streetnumber: '16B',
@@ -187,8 +189,8 @@ const cards = [
         imgUrl: types[3].imgUrl,
         alt: types[3].alt,
         graded: gradedLevels[0], 
-        date: formatDate(new Date(2019, 10, 2, 18, 10)), 
-        address: formatAddress(
+        date: utility.formatDate(new Date(2019, 10, 2, 18, 10)), 
+        address: utility.formatAddress(
             { 
                 streetname: 'Simon Leinums veg',
                 streetnumber: '15',
@@ -205,8 +207,8 @@ const cards = [
         imgUrl: types[3].imgUrl,
         alt: types[3].alt,
         graded: gradedLevels[0], 
-        date: formatDate(new Date(2019, 11, 2, 18, 10)), 
-        address: formatAddress(
+        date: utility.formatDate(new Date(2019, 11, 2, 18, 10)), 
+        address: utility.formatAddress(
             { 
                 streetname: 'Myraveien',
                 streetnumber: '3',
@@ -230,7 +232,7 @@ if (typeof(Storage) !== 'undefined') {
     /* anonymous arrow function to group code */
     (() => {
         /* function for getting localstorage key, and parsing it to object literal */
-        let getCards = getAndParse('cards');
+        let getCards = utility.getAndParse('cards');
 
         /* for each loop to loop through each card object */
         getCards.forEach(function(item) {
@@ -240,10 +242,10 @@ if (typeof(Storage) !== 'undefined') {
             
             /* conditional check to append the cards correctly */
             if (item.status == 'Ikke løst') {
-                generateCard(card, 'div.not-solved');
+                card.generateCard('div.not-solved');
 
             } else {
-                generateCard(card, 'div.solved');
+                card.generateCard('div.solved');
             }
         });
     })();
