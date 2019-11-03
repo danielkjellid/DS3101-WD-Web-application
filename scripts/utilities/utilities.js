@@ -7,9 +7,6 @@ class Utility {
         return this.name;
     }
 
-    /* function for getting address from the address array, and format it */
-    formatAddress = (object) => { return '' + object.streetname + ' ' + object.streetnumber + ', ' + object.place; }
-
     /* function for adding '0' before int if the int is singular, so that it becomes 01:00 isntead of 1:1 */
     formatDateTime = (variable) => { return ('0' + variable).slice(-2); }
 

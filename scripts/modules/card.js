@@ -1,9 +1,10 @@
 class Card {
 
-    constructor(id, status, title, type, imgUrl, alt, graded, date, address) {
+    constructor(id, status, title, desc, type, imgUrl, alt, graded, date, address) {
         this.id = id;
         this.status = status;
         this.title = title;
+        this.desc = desc;
         this.type = type;
         this.imgUrl = imgUrl;
         this.alt = alt;
@@ -23,6 +24,10 @@ class Card {
 
     getTitle() {
         return this.title;
+    }
+
+    getDesc() {
+        return this.desc;
     }
 
     getType() {
@@ -49,6 +54,26 @@ class Card {
         return this.address;
     }
 
+    getFormattedAddress() {
+        return this.address.streetname + ' ' + this.address.streetnumber + ', ' + this.address.place;
+    }
+
+    getStreetName() {
+        return this.address.streetname;
+    }
+
+    getStreetNumber() {
+        return this.address.streetnumber;
+    }
+
+    getZip() {
+        return this.address.zip;
+    }
+
+    getPlace() {
+        return this.address.place;
+    }
+
     /* set methods */
     setId(id) {
         this.id = id; 
@@ -60,6 +85,10 @@ class Card {
 
     setTitle(title) {
         this.title = title;
+    }
+
+    setDesc(desc) {
+        this.desc = desc;
     }
 
     setType(type) {
@@ -100,7 +129,7 @@ class Card {
     createTempStorage() {
 
         /* create new card object */
-        let card = new Card(this.getId(), this.getStatus(), this.getTitle(), this.getType(), this.getImgUrl(), this.getAlt(), this.getGradedLevel(), this.getDate(), this.getAddress());
+        let card = new Card(this.getId(), this.getStatus(), this.getTitle(), this.getDesc(), this.getType(), this.getImgUrl(), this.getAlt(), this.getGradedLevel(), this.getDate(), this.getAddress());
 
         /* check if card object already exists in localstorage */
         if (localStorage.getItem('card') === null) {
@@ -143,7 +172,7 @@ class Card {
                                         <svg class="case-card-meta-icn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                             <path d="M13 20v-5h-2v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.59l-.3.3a1 1 0 1 1-1.4-1.42l9-9a1 1 0 0 1 1.4 0l9 9a1 1 0 0 1-1.4 1.42l-.3-.3V20a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2zm5 0v-9.59l-6-6-6 6V20h3v-5c0-1.1.9-2 2-2h2a2 2 0 0 1 2 2v5h3z"/>
                                         </svg>
-                                        <span>${this.getAddress()}</span>
+                                        <span>${this.getFormattedAddress()}</span>
                                     </div>
                                     <div class="flex items-center case-card-meta-content">
                                         <!-- Ivaretar UU ved hjelp av sterk grå farge mot hvit bakgrunn på ikon -->
@@ -174,6 +203,97 @@ class Card {
             /* call tempStorage (and createTempStorage) to store object */
             tempStorage();
         });
+    }
+
+    generateEditForm(container, types, gradedLevels, statuses) {
+
+        let getType = () => { return this.getType(); }
+
+        let getGradedLevel = () => { return this.getGradedLevel(); }
+
+        let getStatus = () => { return this.getStatus(); }
+
+        let loopAndAppend = (items, func, container) => {
+            items.forEach(function(item) {
+                if (func == item.name) {
+                    $(container).append(new Option(item.name, item.name, false, true));
+                } else {
+                    $(container).append(new Option(item.name, item.name, false, false));
+                }
+            });
+        }
+
+        let generateForm = `<div class="edit-form">
+                                <div>
+                                    <img class="edit-form-img" src="${this.getImgUrl()}" alt="${this.getAlt()}">
+                                </div>
+                                <form class="edit-form-form" action="">
+                                    <div class="form-section basic-section">
+                                        <div class="form-group type-group">
+                                            <label for="type-select">Kategori</label>
+                                            <select class="w-1 type-select" id="type-select">
+                                                <!-- Created by DOM -->
+                                            </select>
+                                        </div>
+                                        <div class="form-group title-group">
+                                            <label for="title">Tittel</label>
+                                            <input class="w-1" type="text" id="title" placeholder="Tittel" value="${this.getTitle()}">
+                                        </div>
+                                        <div class="form-group desc-group">
+                                            <label for="desc">Beskrivelse</label>
+                                            <textarea class="w-1" id="desc" placeholder="Beskrivelse">${this.getDesc()}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-section address-section">
+                                        <div class="form-group street-group">
+                                            <div class="flex w-1">
+                                                <div class="w-4/5 mr-2">
+                                                    <label for="streetname">Gate</label>
+                                                    <input class="w-1" type="text" id="streetname" placeholder="Gatenavn" value="${this.getStreetName()}">
+                                                </div>
+                                                <div class="w-1/5">
+                                                    <label for="streetnumber">Nr</label>
+                                                    <input class="w-1" type="text" id="streetnumber" placeholder="Nr" value="${this.getStreetNumber()}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group zipplace-group">
+                                            <div class="flex w-1">
+                                                <div class="w-1/2 mr-2">
+                                                    <label for="zip">Postkode</label>
+                                                    <input class="w-1" type="text" id="zip" placeholder="Postkode" value="${this.getZip()}">
+                                                </div>
+                                                <div class="w-1/2">
+                                                    <label for="place">Sted</label>
+                                                    <input class="w-1" type="text" id="place" placeholder="Poststed" value="${this.getPlace()}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-section misc-section">
+                                        <div class="form-group grade-group">
+                                            <label for="graded-level-select">Graderingsnivå</label>
+                                            <select id="graded-level-select" class="w-1">
+                                                <!-- Options created by DOM -->
+                                            </select>
+                                        </div>
+                                        <div class="form-group status-group">
+                                            <label for="status-select">Status</label>
+                                            <select id="status-select" class="w-1">
+                                                <!-- Options created by DOM -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="edit-form-footer">
+                                        <button class="edit-form-submit-btn">Lagre</button>
+                                    </div>
+                                </form>
+                            </div>`;
+                            
+        $(container).append(generateForm);
+        loopAndAppend(types, getType(), '#type-select');
+        loopAndAppend(gradedLevels, getGradedLevel(), '#graded-level-select');
+        loopAndAppend(statuses, getStatus(), '#status-select');
     }
 }
 
