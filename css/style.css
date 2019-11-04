@@ -634,9 +634,13 @@ select:focus {
   margin-bottom: 1rem;
 }
 
-.breadcrumbs {
+.toolbar {
   background-color: #FFFFFF;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-bottom: 1rem;
+}
+
+.breadcrumbs {
   padding-bottom: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -666,6 +670,17 @@ select:focus {
 
 .breadcrumbs-icn path {
   fill: #A0AEC0;
+}
+
+.breadcrumbs-action {
+  background-color: #FFFFFF;
+  border-bottom: 0;
+  border-left: 1px solid #E2E8F0;
+  display: block;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
 }
 
 /* styling of section title */
@@ -852,6 +867,68 @@ select:focus {
   padding-bottom: 0.75rem;
 }
 
+.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  background-color: rgba(0,0,0,0.4);
+  left: 0;
+  overflow: auto !important;
+  top: 0;
+  height: 100%;
+  padding-top: 1rem;
+  position: fixed;
+  width: 100%;
+}
+
+.modal-content {
+  background-color: #FFFFFF;
+  border-radius: 6px;
+  margin-bottom: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: auto;
+}
+
+.modal-header {
+  padding: 1rem;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.modal-header h1 {
+  color: #2D3748;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.modal-header-close-icn {
+  height: 1.5rem;
+  widows: 1.5rem;
+}
+
+.modal-header-close-icn path {
+  fill: #A0AEC0;
+}
+
+.modal-footer {
+  background-color: #EDF2F7;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  padding: 1rem; 
+}
+
+.modal-submit-btn {
+  background-color: #2D3748;
+  border-radius: 6px;
+  color: #FFFFFF;
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 @media (min-width: 768px) {
   .container {
     padding-left: 2.5rem;
@@ -883,6 +960,12 @@ select:focus {
   .status-group {
     width: 50%;
   }
+
+  .modal-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -900,6 +983,13 @@ select:focus {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2rem;
+    margin-top: 2rem;
+    width: 60%;
+  }
+
+  .modal-content {
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 2rem;
     width: 60%;
   }

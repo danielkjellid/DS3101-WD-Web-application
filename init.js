@@ -289,14 +289,14 @@ if (typeof(Storage) !== 'undefined') {
     if($('body.overview')[0]) {
         
         /* function for getting localstorage key, and parsing it to object literal */
-        let getCards = utility.getAndParse('cards');
-
+        let cards = utility.getAndParse('cards');
+        
         /* for each loop to loop through each card object */
-        getCards.forEach(function(item) {
+        cards.forEach(function(item) {
 
             /* add each card in the for loop to the card constructor */
             let card = new Card(item.id, item.status, item.title, item.desc, item.type, item.imgUrl, item.alt, item.graded, item.date, item.address);
-
+            
             /* conditional check to append the cards correctly */
             if (item.status == 'Ikke løst') {
                 card.generateCard('div.not-solved');
@@ -305,6 +305,9 @@ if (typeof(Storage) !== 'undefined') {
                 card.generateCard('div.solved');
             }
         });
+
+        $('span.count-not-solved').html(cards.filter(obj => obj.status == 'Ikke løst').length);
+        $('span.count-solved').html(cards.filter(obj => obj.status == 'Løst').length);
         
     } else if ($('body.edit')[0]){
 
@@ -321,6 +324,34 @@ if (typeof(Storage) !== 'undefined') {
 
             card.generateEditForm('section.container', types, gradedLevels, statuses, cards);
         }
+    } else if ($('body.cases')[0]) {
+
+        /* function for getting localstorage key, and parsing it to object literal */
+        let cards = utility.getAndParse('cards');
+
+        /* for each loop to loop through each card object */
+        cards.forEach(function(item) {
+
+            /* add each card in the for loop to the card constructor */
+            let card = new Card(item.id, item.status, item.title, item.desc, item.type, item.imgUrl, item.alt, item.graded, item.date, item.address);
+
+            /* conditional check to append the cards correctly */
+            if (item.status == 'Ikke løst') {
+                card.generateCard('div.not-solved');
+
+            } else {
+                card.generateCard('div.solved');
+            }
+        });
+
+        let types = utility.getAndParse('types');
+        let gradedLevels = utility.getAndParse('gradedLevels');
+        let statuses = utility.getAndParse('statuses');
+
+        utility.generateAddForm('main', types, gradedLevels, statuses, utility.toggleModal());
+
+        $('span.count-not-solved').html(cards.filter(obj => obj.status == 'Ikke løst').length);
+        $('span.count-solved').html(cards.filter(obj => obj.status == 'Løst').length);
     }
 
 

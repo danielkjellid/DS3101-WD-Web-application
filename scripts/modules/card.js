@@ -232,12 +232,14 @@ class Card {
         /* easy access to saveCard class method */
         let saveCard = () => { return this.saveCard(arr, types); }
 
+        let deleteCard = () => {return this.deleteCard(arr); }
+
         /* variable for holding html code. Formatted for readability */
         let generateForm = `<div class="edit-form">
                                 <div>
                                     <img class="edit-form-img" src="${this.getImgUrl()}" alt="${this.getAlt()}">
                                 </div>
-                                <form id="edit-form" class="edit-form-form action="">
+                                <form id="edit-form" action="">
                                     <div class="form-section basic-section">
                                         <div class="form-group type-group">
                                             <label for="type-select">Kategori</label>
@@ -308,6 +310,13 @@ class Card {
         loopAndAppend(gradedLevels, getGradedLevel(), '#graded-level-select');
         loopAndAppend(statuses, getStatus(), '#status-select');
 
+        $('a#delete-card').on('click', function(){
+            
+            if (window.confirm("Are you sure you want to delete the card?") == true) {
+                deleteCard();
+            }
+        });
+
         /* event handler for saving form */
         $('#edit-form').submit(function(e) {
             saveCard();
@@ -356,6 +365,32 @@ class Card {
             localStorage.setItem('cards', JSON.stringify(cards));
         }
     }
+
+    deleteCard(arr) {
+        if (localStorage.getItem('cards') === null) {
+
+            /* if not, throw error */
+            alert('There was an error deleting the card due to not finding the cards array in localstorage');
+        } else {
+            
+            /* get and parse temporary card object */
+            let card = JSON.parse(localStorage.getItem('card'));
+
+            /* get parsed array from function */
+            let cards = arr;
+
+            /* find the index of the matching id's in the cards array */
+            let index = cards.findIndex(obj => obj.id === card.id);
+
+            /* replace object found with card created from form values */
+            cards.splice(index, 1);
+
+            /* remove the cards array from local storage, before readding it with new details */
+            localStorage.removeItem('cards');
+            localStorage.setItem('cards', JSON.stringify(cards));
+        }
+    }
+    
 }
 
 export default Card;

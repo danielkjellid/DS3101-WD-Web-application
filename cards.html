@@ -4,21 +4,36 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>PST - Edit</title>
+        <title>PST</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
         <script src="scripts/jquery.js"></script>
     </head>
-    <body class="edit">
+    <body class="cases">
         <header class="header">
             <!-- navbar created by DOM -->
         </header>
-        <main class="main">
+        <main>
             <div class="toolbar flex items-center justify-between">
-                
+
             </div>
             <section class="container">
-                
+                <div class="flex items-center">
+                    <h1 class="section-title">Aktive saker</h1>
+                    <span class="section-count count-not-solved"><!-- count created by DOM --></span>
+                </div>
+                <div id="not-solved" class="grid not-solved">
+                    <!-- cards created by DOM -->
+                </div>
+            </section>
+            <section class="container">
+                <div class="flex items-center">
+                    <h1 class="section-title">Fullførte saker</h1>
+                    <span class="section-count count-solved"><!-- count created by DOM --></span>
+                </div>
+                <div id="solved" class="grid solved">
+                    <!-- cards created by DOM -->
+                </div>
             </section>
         </main>
         <footer class="footer">
@@ -29,10 +44,3 @@
         <script src="scripts/utilities/menuToggle.js"></script>
     </body>
 </html>
-
-<svg class="breadcrumbs-icn" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <circle id="Oval" fill="#000000" cx="10" cy="10" r="10"></circle>
-    <path class="primary" d="M5 5h14l-.89 15.12a2 2 0 0 1-2 1.88H7.9a2 2 0 0 1-2-1.88L5 5zm5 5a1 1 0 0 0-1 1v6a1 1 0 0 0 2 0v-6a1 1 0 0 0-1-1zm4 0a1 1 0 0 0-1 1v6a1 1 0 0 0 2 0v-6a1 1 0 0 0-1-1z"/><path class="secondary" d="M8.59 4l1.7-1.7A1 1 0 0 1 11 2h2a1 1 0 0 1 .7.3L15.42 4H19a1 1 0 0 1 0 2H5a1 1 0 1 1 0-2h3.59z"/>
-</svg>
-
-

@@ -23,9 +23,8 @@ class Header {
                             '</button>' +
                         '</div>' +
                         '<nav class="nav hidden">' + 
-                            '<a href="#" class="nav-item active">Oversikt</a>' +
-                            '<a href="#" class="nav-item">Saker</a>' + 
-                            '<a href="#" class="nav-item">Ettersøkte</a>' +
+                            '<a href="index.html" class="nav-item">Oversikt</a>' +
+                            '<a href="cards.html" class="nav-item">Saker</a>' + 
                         '</nav>';
 
         $(container).append(header);

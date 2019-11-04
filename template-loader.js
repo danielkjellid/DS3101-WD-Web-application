@@ -9,5 +9,5 @@ const footer = new Footer('footer');
 
 /* call functions to generate header and footer templates */
 header.generateHeader('header.header');
-breadcrumb.generateBreadcrumb('div.breadcrumbs', 'Rediger kort', 'index.html');
+breadcrumb.generateBreadcrumb('div.toolbar');
 footer.generateFooter('footer.footer')
