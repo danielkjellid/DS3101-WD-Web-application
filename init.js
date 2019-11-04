@@ -299,10 +299,10 @@ if (typeof(Storage) !== 'undefined') {
             
             /* conditional check to append the cards correctly */
             if (item.status == 'Ikke løst') {
-                card.generateCard('div.not-solved');
+                utility.generateCard(card, 'div.not-solved');
 
             } else {
-                card.generateCard('div.solved');
+                utility.generateCard(card, 'div.solved');
             }
         });
 
@@ -322,7 +322,7 @@ if (typeof(Storage) !== 'undefined') {
 
             let card = new Card(item.id, item.status, item.title, item.desc, item.type, item.imgUrl, item.alt, item.graded, item.date, item.address);
 
-            card.generateEditForm('section.container', types, gradedLevels, statuses, cards);
+            utility.generateEditForm(card, 'section.container', types, gradedLevels, statuses, cards);
         }
     } else if ($('body.cases')[0]) {
 
@@ -337,10 +337,10 @@ if (typeof(Storage) !== 'undefined') {
 
             /* conditional check to append the cards correctly */
             if (item.status == 'Ikke løst') {
-                card.generateCard('div.not-solved');
+                utility.generateCard(card, 'div.not-solved');
 
             } else {
-                card.generateCard('div.solved');
+                utility.generateCard(card, 'div.solved');
             }
         });
 
