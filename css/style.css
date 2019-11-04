@@ -465,7 +465,11 @@ select:focus {
 }
 
 .justify-end {
-	justify-content: end;
+	justify-content: flex-end !important;
+}
+
+.justify-around {
+  justify-content: space-around;
 }
 
 .items-center {
@@ -585,15 +589,15 @@ select:focus {
   
   /* remove hamburger menu */
 	.header-item .menu-btn {
-		display: none;
-	}
+    display: none;
+  }
 
   /* create nav flex, center items vertically and remove border */
 	.nav {
 		align-items: center;
 		display: flex;
 		border-top: 0;
-		box-shadow: none;
+    box-shadow: none;
 	}
 
   /* add margin for nav items */
@@ -629,6 +633,7 @@ select:focus {
 }
 
 .banner {
+  background-color: #FFFFFF;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   height: 16rem;
   margin-bottom: 1rem;
@@ -659,17 +664,33 @@ select:focus {
   margin-left: 0.25rem;
 }
 
-.breadcrumbs-icn {
+.icn {
   height: 2rem;
   width: 2rem;
 }
 
-.breadcrumbs-icn circle {
+.icn circle {
   fill: #E2E8F0;
 }
 
-.breadcrumbs-icn path {
+.icn path {
   fill: #A0AEC0;
+}
+
+.icn rect {
+  fill: #A0AEC0;
+}
+
+.icn.actions-bar circle {
+  fill: #2D3748;
+}
+
+.icn.actions-bar path {
+  fill: #FFFFFF;
+}
+
+.icn.actions-bar rect {
+  fill: #FFFFFF;
 }
 
 .breadcrumbs-action {
@@ -798,7 +819,15 @@ select:focus {
 
 /* styling for action container */
 .case-card-action {
-	background-color: #EDF2F7;
+  background-color: #EDF2F7;
+}
+
+.case-card-action-btn-container {
+  border-right: 1px solid #E2E8F0;
+  padding: 1rem;
+}
+
+.case-card-action-icn-container {
   padding: 1rem;
 }
 
@@ -823,6 +852,11 @@ select:focus {
 .case-card-action-btn:disabled:hover,
 .case-card-action-btn[disabled]:hover {
   background-color: #2D3748;
+}
+
+.form-meta-text {
+  color: #718096;
+  font-style: italic;
 }
 
 .edit-form {
@@ -930,10 +964,6 @@ select:focus {
 }
 
 @media (min-width: 768px) {
-  .container {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
 
   .grid {
     grid-template-columns: repeat(2, 1fr);
@@ -969,10 +999,6 @@ select:focus {
 }
 
 @media (min-width: 1024px) {
-  .container {
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
-  }
 
   .grid {
     grid-template-columns: repeat(3, 1fr);
