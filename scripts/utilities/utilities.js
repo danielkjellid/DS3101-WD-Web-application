@@ -134,9 +134,11 @@ class Utility {
         });
     }
 
-    generateAddForm(container, types, gradedLevels, statuses) {
+    generateAddForm(container, types, gradedLevels, statuses, arr) {
 
         let toggleModal = () => { return this.toggleModal() }
+
+        let addCard = () => { return this.addCard(arr, types) }
 
         /* function for looping through parsed localstorage objects, and appending the names to select container */
         let loopAndAppend = (items, container) => {
@@ -156,7 +158,7 @@ class Utility {
                                                 </svg>
                                             </button>
                                         </div>
-                                        <form id="create-form" action="">
+                                        <form id="add-form" action="">
                                             <div class="modal-body">
                                                 <div class="form-section basic-section">
                                                     <div class="form-group type-group">
@@ -236,6 +238,10 @@ class Utility {
 
         $('button#close-modal').on('click', function() {
             toggleModal();
+        });
+
+        $('#add-form').submit(function(e) {
+            addCard();
         });
     }
 
@@ -352,7 +358,7 @@ class Utility {
         });
 
         /* event handler for saving form */
-        $('#edit-form').submit(function(e) {
+        $('#edit-form').submit(function() {
             saveCard();
         });
     }
@@ -374,7 +380,7 @@ class Utility {
         let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue};
 
         /* create and replace temporary storage object (card) with details from form */
-        this.createTempStorage(obj.getId(), statusValue, titleValue, descValue, typeValue, imgUrlValue, altValue, gradedLevelValue, obj.getDate(), addressValue)
+        this.createTempStorage(obj.getId(), statusValue, titleValue, descValue, typeValue, imgUrlValue, altValue, gradedLevelValue, obj.getDate(), addressValue);
 
         /* check of cards key exists in localstorage */
         if (localStorage.getItem('cards') === null) {
@@ -383,7 +389,7 @@ class Utility {
             alert('There was an error saving the form due to not finding the cards array in localstorage');
         } else {
             /* get and parse temporary card object */
-            let card = JSON.parse(localStorage.getItem('card'));
+            let card = this.getAndParse('card');
 
             /* get parsed array from function */
             let cards = arr;
@@ -397,6 +403,52 @@ class Utility {
             /* remove the cards array from local storage, before readding it with new details */
             localStorage.removeItem('cards');
             localStorage.setItem('cards', JSON.stringify(cards));
+        }
+    }
+
+    addCard(arr, types) {
+
+        let maxId = 0;
+        arr.map(function(obj) {
+            if (obj.id > maxId) { 
+                maxId = obj.id;
+            }
+        });
+
+        /* gather values from form */
+        let statusValue = $('select#status-select').val();
+        let titleValue = $('input#title').val();
+        let descValue = $('textarea#desc').val();
+        let typeValue = $('select#type-select').val();
+        let imgUrlValue = types[types.findIndex(n => n.name === typeValue)].imgUrl;
+        let altValue = types[types.findIndex(n => n.name === typeValue)].alt;
+        let gradedLevelValue = $('select#graded-level-select').val();
+        let streetNameValue = $('input#streetname').val();
+        let streetNumberValue = $('input#streetnumber').val();
+        let zipValue = $('input#zip').val();
+        let placeValue = $('input#place').val();
+        let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue};
+
+        /* create and replace temporary storage object (card) with details from form */
+        this.createTempStorage(maxId+1, statusValue, titleValue, descValue, typeValue, imgUrlValue, altValue, gradedLevelValue, '1920-12-12', addressValue);
+
+        if (localStorage.getItem('cards') === null) {
+
+            alert("There was an error creating card due to not finding the cards array in localstorage");
+        } else {
+             
+            if (localStorage.getItem('card') === null) {
+                alert("There was an error creating card due to not finding the card array in localstorage");
+            } else {
+
+                let card = this.getAndParse('card');
+                let cards = arr;
+
+                cards.push(card);
+
+                localStorage.removeItem('cards');
+                localStorage.setItem('cards', JSON.stringify(cards));
+            }
         }
     }
 

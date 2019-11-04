@@ -348,7 +348,7 @@ if (typeof(Storage) !== 'undefined') {
         let gradedLevels = utility.getAndParse('gradedLevels');
         let statuses = utility.getAndParse('statuses');
 
-        utility.generateAddForm('main', types, gradedLevels, statuses, utility.toggleModal());
+        utility.generateAddForm('main', types, gradedLevels, statuses, cards);
 
         $('span.count-not-solved').html(cards.filter(obj => obj.status == 'Ikke løst').length);
         $('span.count-solved').html(cards.filter(obj => obj.status == 'Løst').length);
