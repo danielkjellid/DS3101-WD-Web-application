@@ -388,21 +388,27 @@ class Utility {
             /* if not, throw error */
             alert('There was an error saving the form due to not finding the cards array in localstorage');
         } else {
-            /* get and parse temporary card object */
-            let card = this.getAndParse('card');
 
-            /* get parsed array from function */
-            let cards = arr;
+            if (localStorage.getItem('card') == null) {
+                /* if not, throw error */
+                alert('There was an error saving the form due to not finding the card array in localstorage');
+            } else {
+                /* get and parse temporary card object */
+                let card = this.getAndParse('card');
 
-            /* find the index of the matching id's in the cards array */
-            let index = cards.findIndex(obj => obj.id === card.id);
+                /* get parsed array from function */
+                let cards = arr;
 
-            /* replace object found with card created from form values */
-            cards.splice(index, 1, card);
+                /* find the index of the matching id's in the cards array */
+                let index = cards.findIndex(obj => obj.id === card.id);
 
-            /* remove the cards array from local storage, before readding it with new details */
-            localStorage.removeItem('cards');
-            localStorage.setItem('cards', JSON.stringify(cards));
+                /* replace object found with card created from form values */
+                cards.splice(index, 1, card);
+
+                /* remove the cards array from local storage, before readding it with new details */
+                localStorage.removeItem('cards');
+                localStorage.setItem('cards', JSON.stringify(cards));
+            }
         }
     }
 
@@ -459,21 +465,23 @@ class Utility {
             alert('There was an error deleting the card due to not finding the cards array in localstorage');
         } else {
 
-            /* get and parse temporary card object */
-            let card = JSON.parse(localStorage.getItem('card'));
+            if (localStorage.getItem('card') === null) {
+                /* get and parse temporary card object */
+                let card = this.getAndParse('card');
 
-            /* get parsed array from function */
-            let cards = arr;
+                /* get parsed array from function */
+                let cards = arr;
 
-            /* find the index of the matching id's in the cards array */
-            let index = cards.findIndex(obj => obj.id === card.id);
+                /* find the index of the matching id's in the cards array */
+                let index = cards.findIndex(obj => obj.id === card.id);
 
-            /* replace object found with card created from form values */
-            cards.splice(index, 1);
+                /* replace object found with card created from form values */
+                cards.splice(index, 1);
 
-            /* remove the cards array from local storage, before readding it with new details */
-            localStorage.removeItem('cards');
-            localStorage.setItem('cards', JSON.stringify(cards));
+                /* remove the cards array from local storage, before readding it with new details */
+                localStorage.removeItem('cards');
+                localStorage.setItem('cards', JSON.stringify(cards));
+            }
         }
     }
 }
