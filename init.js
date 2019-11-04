@@ -251,8 +251,6 @@ const cards = [
     },   
 ];
 
-
-
 /*
 * Initialization of code
 */
@@ -317,10 +315,11 @@ if (typeof(Storage) !== 'undefined') {
             let types = utility.getAndParse('types');
             let gradedLevels = utility.getAndParse('gradedLevels');
             let statuses = utility.getAndParse('statuses');
+            let cards = utility.getAndParse('cards');
 
             let card = new Card(item.id, item.status, item.title, item.desc, item.type, item.imgUrl, item.alt, item.graded, item.date, item.address);
-        
-            card.generateEditForm('section.container', types, gradedLevels, statuses);
+
+            card.generateEditForm('section.container', types, gradedLevels, statuses, cards);
         }
     }
 

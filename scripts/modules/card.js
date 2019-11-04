@@ -126,10 +126,10 @@ class Card {
 
     /* temporary storage function is used to create a temporary object in local storage. */
     /* this is to be able to grab specific card details when editing card in edit.html */
-    createTempStorage() {
+    createTempStorage(id, status, title, desc, type, imgUrl, alt, gradedLevel, date, address) {
 
         /* create new card object */
-        let card = new Card(this.getId(), this.getStatus(), this.getTitle(), this.getDesc(), this.getType(), this.getImgUrl(), this.getAlt(), this.getGradedLevel(), this.getDate(), this.getAddress());
+        let card = new Card(id, status, title, desc, type, imgUrl, alt, gradedLevel, date, address);
 
         /* check if card object already exists in localstorage */
         if (localStorage.getItem('card') === null) {
@@ -147,7 +147,7 @@ class Card {
     generateCard(container) {
 
         /* storing createTempStorage in another function for easy access */
-        let tempStorage = () => {this.createTempStorage()};
+        let tempStorage = () => {this.createTempStorage(this.getId(), this.getStatus(), this.getTitle(), this.getDesc(), this.getType(), this.getImgUrl(), this.getAlt(), this.getGradedLevel(), this.getDate(), this.getAddress())};
 
         /* card structure, formatted for readability */
         let generateCard = `<article class="case-card">
@@ -205,16 +205,22 @@ class Card {
         });
     }
 
-    generateEditForm(container, types, gradedLevels, statuses) {
+    generateEditForm(container, types, gradedLevels, statuses, arr) {
 
+        /* easy access to getType class method */
         let getType = () => { return this.getType(); }
 
+        /* easy access to getGradedLevel class method */
         let getGradedLevel = () => { return this.getGradedLevel(); }
-
+        
+        /* easy access to getStatus class method */
         let getStatus = () => { return this.getStatus(); }
 
+        /* function for looping through parsed localstorage objects, and appending the names to select container */
         let loopAndAppend = (items, func, container) => {
             items.forEach(function(item) {
+
+                /* if function, for example getStatus() is equal to item name, make item seleceted */
                 if (func == item.name) {
                     $(container).append(new Option(item.name, item.name, false, true));
                 } else {
@@ -223,11 +229,15 @@ class Card {
             });
         }
 
+        /* easy access to saveCard class method */
+        let saveCard = () => { return this.saveCard(arr, types); }
+
+        /* variable for holding html code. Formatted for readability */
         let generateForm = `<div class="edit-form">
                                 <div>
                                     <img class="edit-form-img" src="${this.getImgUrl()}" alt="${this.getAlt()}">
                                 </div>
-                                <form class="edit-form-form" action="">
+                                <form id="edit-form" class="edit-form-form action="">
                                     <div class="form-section basic-section">
                                         <div class="form-group type-group">
                                             <label for="type-select">Kategori</label>
@@ -285,15 +295,66 @@ class Card {
                                         </div>
                                     </div>
                                     <div class="edit-form-footer">
-                                        <button class="edit-form-submit-btn">Lagre</button>
+                                        <button type="submit" class="edit-form-submit-btn">Lagre</button>
                                     </div>
                                 </form>
                             </div>`;
-                            
+        
+        /* append genereateForm variable to container */
         $(container).append(generateForm);
+
+        /* add content to selects */
         loopAndAppend(types, getType(), '#type-select');
         loopAndAppend(gradedLevels, getGradedLevel(), '#graded-level-select');
         loopAndAppend(statuses, getStatus(), '#status-select');
+
+        /* event handler for saving form */
+        $('#edit-form').submit(function(e) {
+            saveCard();
+        });
+    }
+
+    saveCard(arr, types) {
+        
+        /* gather values from form */
+        let statusValue = $('select#status-select').val();
+        let titleValue = $('input#title').val();
+        let descValue = $('textarea#desc').val();
+        let typeValue = $('select#type-select').val();
+        let imgUrlValue = types[types.findIndex(n => n.name === typeValue)].imgUrl;
+        let altValue = types[types.findIndex(n => n.name === typeValue)].alt;
+        let gradedLevelValue = $('select#graded-level-select').val();
+        let streetNameValue = $('input#streetname').val();
+        let streetNumberValue = $('input#streetnumber').val();
+        let zipValue = $('input#zip').val();
+        let placeValue = $('input#place').val();
+        let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue};
+
+        /* create and replace temporary storage object (card) with details from form */
+        this.createTempStorage(this.getId(), statusValue, titleValue, descValue, typeValue, imgUrlValue, altValue, gradedLevelValue, this.getDate(), addressValue)
+        
+        /* check of cards key exists in localstorage */
+        if (localStorage.getItem('cards') === null) {
+
+            /* if not, throw error */
+            alert('There was an error saving the form due to not finding the cards array in localstorage');
+        } else {
+            /* get and parse temporary card object */
+            let card = JSON.parse(localStorage.getItem('card'));
+
+            /* get parsed array from function */
+            let cards = arr;
+
+            /* find the index of the matching id's in the cards array */
+            let index = cards.findIndex(obj => obj.id === card.id);
+
+            /* replace object found with card created from form values */
+            cards.splice(index, 1, card);
+
+            /* remove the cards array from local storage, before readding it with new details */
+            localStorage.removeItem('cards');
+            localStorage.setItem('cards', JSON.stringify(cards));
+        }
     }
 }
 
