@@ -45,6 +45,16 @@ class Utility {
         }
     }
 
+    toggleMenu = () => {
+        if ($('nav.nav').hasClass('hidden')) {
+            $('nav.nav').removeClass('hidden');
+            $('nav.nav').addClass('block');
+        } else {
+            $('nav.nav').removeClass('block');
+            $('nav.nav').addClass('hidden');
+        }
+    }
+
     /* temporary storage function is used to create a temporary object in local storage. */
     /* this is to be able to grab specific card details when editing card in edit.html */
     createTempStorage(id, status, title, desc, type, imgUrl, alt, gradedLevel, date, address) {
@@ -65,7 +75,9 @@ class Utility {
         }
     }
 
-    generateCard(obj, container, arr) {
+    generateIndexPage(obj, container, arr) {
+
+        let toggleMenu = () => { return this.toggleMenu(); }
 
         /* storing createTempStorage in another function for easy access */
         let tempStorage = () => {return this.createTempStorage(obj.getId(), obj.getStatus(), obj.getTitle(), obj.getDesc(), obj.getType(), obj.getImgUrl(), obj.getAlt(), obj.getGradedLevel(), obj.getDate(), obj.getAddress())};
@@ -158,7 +170,15 @@ class Utility {
             if (window.confirm("Are you sure you want to delete the card?") == true) {
                 deleteCard();
             }
-        })
+        });
+
+        $('button.menu-btn').on('click', function() {
+            toggleMenu();
+        });
+    }
+
+    generateCardsPage(obj, container, arr) {
+        this.generateIndexPage(obj, container, arr);
     }
 
     generateAddForm(container, types, gradedLevels, statuses, arr) {
@@ -272,7 +292,9 @@ class Utility {
         });
     }
 
-    generateEditForm(obj, container, types, gradedLevels, statuses, arr) {
+    generateEditPage(obj, container, types, gradedLevels, statuses, arr) {
+
+        let toggleMenu = () => { return this.toggleMenu(); }
 
         /* easy access to getType class method */
         let getType = () => { return obj.getType(); }
@@ -390,6 +412,10 @@ class Utility {
         /* event handler for saving form */
         $('#edit-form').submit(function() {
             saveCard();
+        });
+
+        $('button.menu-btn').on('click', function() {
+            toggleMenu();
         });
     }
 
