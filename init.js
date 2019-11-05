@@ -6,8 +6,6 @@ import Card from './scripts/modules/card.js';
 
 const utility = new Utility('utility');
 
-console.log(utility.formatDate(new Date()));
-
 /* types of activities */
 const typesArr = [
     {
@@ -290,10 +288,10 @@ if (typeof(Storage) !== 'undefined') {
             
             /* conditional check to append the cards correctly */
             if (item.status == 'Ikke løst') {
-                utility.generateCard(card, 'div.not-solved');
+                utility.generateCard(card, 'div.not-solved', cards);
 
             } else {
-                utility.generateCard(card, 'div.solved');
+                utility.generateCard(card, 'div.solved', cards);
             }
         });
 
@@ -321,10 +319,10 @@ if (typeof(Storage) !== 'undefined') {
 
             /* conditional check to append the cards correctly */
             if (item.status == 'Ikke løst') {
-                utility.generateCard(card, 'div.not-solved');
+                utility.generateCard(card, 'div.not-solved', cards);
 
             } else {
-                utility.generateCard(card, 'div.solved');
+                utility.generateCard(card, 'div.solved', cards);
             }
         });
 

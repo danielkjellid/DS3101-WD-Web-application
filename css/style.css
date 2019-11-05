@@ -520,6 +520,10 @@ select:focus {
   margin: auto;
 }
 
+.titanic {
+  float: none;
+}
+
 /* Head
 ========================================================================== */
 
@@ -822,6 +826,11 @@ select:focus {
   background-color: #EDF2F7;
 }
 
+.case-card-action-container {
+  background-color: #EDF2F7;
+  padding: 1rem;
+}
+
 .case-card-action-btn-container {
   border-right: 1px solid #E2E8F0;
   padding: 1rem;
@@ -852,6 +861,10 @@ select:focus {
 .case-card-action-btn:disabled:hover,
 .case-card-action-btn[disabled]:hover {
   background-color: #2D3748;
+}
+
+.actions-btn {
+  padding: 0;
 }
 
 .form-meta-text {
