@@ -74,7 +74,7 @@ const statusesArr = [
     }
 ];
 
-/* array of cards using constructor layout */
+/* array of default cards */
 const cardsArr = [
     {
         id: 1, 
@@ -272,12 +272,14 @@ if (typeof(Storage) !== 'undefined') {
         localStorage.setItem('cards', JSON.stringify(cardsArr));
     }
 
+    /* global variables getting and parsing localstore objects */
     let cards = utility.getAndParse('cards');
     let types = utility.getAndParse('types');
     let gradedLevels = utility.getAndParse('gradedLevels');
     let statuses = utility.getAndParse('statuses');
 
     /* conditional check to only run block of code on specific pages */
+    /* check if body has the class 'overview' */
     if($('body.overview')[0]) {
         
         /* for each loop to loop through each card object */
@@ -294,18 +296,28 @@ if (typeof(Storage) !== 'undefined') {
                 utility.generateIndexPage(card, 'div.solved', types, gradedLevels, statuses, cards);
             }
         });
-        
+    
+    /* else if the body has the class 'edit' */
     } else if ($('body.edit')[0]){
 
+        /* conditional check to check if the card object exists in localstorage */
         if (localStorage.getItem('card') === null) {
+
+            /* if it does'nt, throw error */
             alert('There was an error displaying the card. It was not found in localstorage.')
         } else {
+
+            /* if it does, get and parse card object */
             let item = utility.getAndParse('card');
 
+            /* create a new card object using card class constructor */
             let card = new Card(item.id, item.status, item.title, item.desc, item.type, item.imgUrl, item.alt, item.graded, item.date, item.address);
 
+            /* generate edit view with card details */
             utility.generateEditPage(card, 'section.container', types, gradedLevels, statuses, cards);
         }
+
+    /* else if the body has the class 'cases' */
     } else if ($('body.cases')[0]) {
 
         /* for each loop to loop through each card object */
@@ -323,6 +335,7 @@ if (typeof(Storage) !== 'undefined') {
             }
         });
 
+        /* generate the add form within the moodal */
         utility.generateAddForm('main', types, gradedLevels, statuses, cards);
     }
 

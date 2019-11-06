@@ -76,6 +76,152 @@ class Utility {
         $('span.count-solved').html(arr.filter(obj => obj.status == 'Løst').length);
     }
 
+    /* save card method is used to save/replace objects in the array defined */
+    /* it does so by creating a temporary object with the ID of card saved, replaces card with the same id in the array
+    and then replaces it */
+    saveCard(obj, arr, types) {
+
+        /* gather values from form */
+        let statusValue = $('select.status-select').val();
+        let titleValue = $('input.title').val();
+        let descValue = $('textarea.desc').val();
+        let typeValue = $('select.category-select').val();
+        let imgUrlValue = types[types.findIndex(x => x.name === typeValue)].imgUrl; /* find the index of the name that matches the cateogry selected */
+        let altValue = types[types.findIndex(x => x.name === typeValue)].alt; /* find the index of the name that matches the cateogry selected */
+        let gradedLevelValue = $('select.graded-level-select').val();
+        let streetNameValue = $('input.streetname').val();
+        let streetNumberValue = $('input.streetnumber').val();
+        let zipValue = $('input.zip').val();
+        let placeValue = $('input.place').val();
+        let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue};
+
+        /* create and replace temporary storage object (card) with details from form by calling the createTempStorage method */
+        this.createTempStorage(obj.getId(), statusValue, titleValue, descValue, typeValue, imgUrlValue, altValue, gradedLevelValue, obj.getDate(), addressValue);
+
+        /* check of cards key exists in localstorage */
+        if (localStorage.getItem('cards') === null) {
+
+            /* if not, throw error */
+            alert('There was an error saving the form due to not finding the cards array in localstorage');
+        } else {
+
+            /* check if localstorage card key exists */
+            if (localStorage.getItem('card') == null) {
+                /* if not, throw error */
+                alert('There was an error saving the form due to not finding the card array in localstorage');
+            } else {
+                /* get and parse temporary card object */
+                let card = this.getAndParse('card');
+
+                /* get parsed array from function */
+                let cards = arr;
+
+                /* find the index of the matching id's in the cards array */
+                let index = cards.findIndex(obj => obj.id === card.id);
+
+                /* replace object found with card created from form values */
+                cards.splice(index, 1, card);
+
+                /* remove the cards array from local storage, before readding it with new details */
+                localStorage.removeItem('cards');
+                localStorage.setItem('cards', JSON.stringify(cards));
+            }
+        }
+    }
+
+    /* add card method is used to add objects to the defined array */
+    /* it functions by grabbing values from form and placing them in a temporary stoarge object, and then adding it to the array */
+    addCard(arr, types) {
+
+        /* block of code to get the biggest id in the defined array */
+        let maxId = 0;
+        /* uses the map method to create a new array */
+        arr.map(function(obj) {
+            /* as long as the id of the object is higher then maxId, set max id to the highest existing value */
+            if (obj.id > maxId) { 
+                maxId = obj.id;
+            }
+        });
+
+        /* gather values from form */
+        let statusValue = $('select#status-select').val();
+        let titleValue = $('input#title').val();
+        let descValue = $('textarea#desc').val();
+        let typeValue = $('select#type-select').val();
+        let imgUrlValue = types[types.findIndex(x => x.name === typeValue)].imgUrl;
+        let altValue = types[types.findIndex(x => x.name === typeValue)].alt;
+        let gradedLevelValue = $('select#graded-level-select').val();
+        let streetNameValue = $('input#streetname').val();
+        let streetNumberValue = $('input#streetnumber').val();
+        let zipValue = $('input#zip').val();
+        let placeValue = $('input#place').val();
+        let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue};
+
+        /* create and replace temporary storage object (card) with details from form, adding an ID with +1 */
+        this.createTempStorage(maxId+1, statusValue, titleValue, descValue, typeValue, imgUrlValue, altValue, gradedLevelValue, this.formatDate(new Date()), addressValue);
+
+        /* conditional check to check if localstorage contains the cards array */
+        if (localStorage.getItem('cards') === null) {
+
+            /* if not, throw error */
+            alert("There was an error creating card due to not finding the cards array in localstorage");
+        } else {
+
+            /* if it does, check if localstorage contains the card object */
+            if (localStorage.getItem('card') === null) {
+
+                /* if not, throw error */
+                alert("There was an error creating card due to not finding the card array in localstorage");
+            } else {
+
+                /* if it does, get and parse the card object, and set cards equal to function parameter */
+                let card = this.getAndParse('card');
+                let cards = arr;
+
+                /* add card to cards through the push method */
+                cards.push(card);
+
+                /* remove the cards array from localstorage, before readding it containing the new object */
+                localStorage.removeItem('cards');
+                localStorage.setItem('cards', JSON.stringify(cards));
+            }
+        }
+    }
+
+    /* delete card method is used to delete objects from the defined array */
+    /* it functions by finding the id of the object passedm abd deleting it from the array */
+    deleteCard(obj, arr) {
+
+        /* conditional check to check i localstorage contains the cards array */
+        if (localStorage.getItem('cards') === null) {
+
+            /* if not, throw error */
+            alert('There was an error deleting the card due to not finding the cards array in localstorage');
+        } else {
+
+            /* if it does, check if localstorage contains the card object */
+            if (localStorage.getItem('card') === null) {
+
+                /* if not, throw error */
+                alert('There was an error deleting the card due to not finding the card array in localstorage')
+            } else {
+
+                /* if it does, set cards equal to array passed into function */
+                let cards = arr;
+
+                /* find the index of the matching id's in the cards array */
+                let index = cards.findIndex(object => object.id === obj.getId());
+
+                /* replace object found with card created from form values */
+                cards.splice(index, 1);
+
+                /* remove the cards array from local storage, before readding it with new details */
+                localStorage.removeItem('cards');
+                localStorage.setItem('cards', JSON.stringify(cards));
+            }
+        }
+    }
+
     /* temporary storage method is used to create a temporary object in local storage. */
     /* this is to be able to grab specific card details when editing card in edit.html */
     createTempStorage(id, status, title, desc, type, imgUrl, alt, gradedLevel, date, address) {
@@ -613,152 +759,6 @@ class Utility {
         $('#edit-existing-form').submit(function() {
             saveCard(); /* runs saveCard function/method */
         });
-    }
-
-    /* save card method is used to save/replace objects in the array defined */
-    /* it does so by creating a temporary object with the ID of card saved, replaces card with the same id in the array
-    and then replaces it */
-    saveCard(obj, arr, types) {
-
-        /* gather values from form */
-        let statusValue = $('select.status-select').val();
-        let titleValue = $('input.title').val();
-        let descValue = $('textarea.desc').val();
-        let typeValue = $('select.category-select').val();
-        let imgUrlValue = types[types.findIndex(x => x.name === typeValue)].imgUrl; /* find the index of the name that matches the cateogry selected */
-        let altValue = types[types.findIndex(x => x.name === typeValue)].alt; /* find the index of the name that matches the cateogry selected */
-        let gradedLevelValue = $('select.graded-level-select').val();
-        let streetNameValue = $('input.streetname').val();
-        let streetNumberValue = $('input.streetnumber').val();
-        let zipValue = $('input.zip').val();
-        let placeValue = $('input.place').val();
-        let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue};
-        
-        /* create and replace temporary storage object (card) with details from form by calling the createTempStorage method */
-        this.createTempStorage(obj.getId(), statusValue, titleValue, descValue, typeValue, imgUrlValue, altValue, gradedLevelValue, obj.getDate(), addressValue);
-
-        /* check of cards key exists in localstorage */
-        if (localStorage.getItem('cards') === null) {
-
-            /* if not, throw error */
-            alert('There was an error saving the form due to not finding the cards array in localstorage');
-        } else {
-
-            /* check if localstorage card key exists */
-            if (localStorage.getItem('card') == null) {
-                /* if not, throw error */
-                alert('There was an error saving the form due to not finding the card array in localstorage');
-            } else {
-                /* get and parse temporary card object */
-                let card = this.getAndParse('card');
-
-                /* get parsed array from function */
-                let cards = arr;
-
-                /* find the index of the matching id's in the cards array */
-                let index = cards.findIndex(obj => obj.id === card.id);
-
-                /* replace object found with card created from form values */
-                cards.splice(index, 1, card);
-
-                /* remove the cards array from local storage, before readding it with new details */
-                localStorage.removeItem('cards');
-                localStorage.setItem('cards', JSON.stringify(cards));
-            }
-        }
-    }
-
-    /* add card method is used to add objects to the defined array */
-    /* it functions by grabbing values from form and placing them in a temporary stoarge object, and then adding it to the array */
-    addCard(arr, types) {
-
-        /* block of code to get the biggest id in the defined array */
-        let maxId = 0;
-        /* uses the map method to create a new array */
-        arr.map(function(obj) {
-            /* as long as the id of the object is higher then maxId, set max id to the highest existing value */
-            if (obj.id > maxId) { 
-                maxId = obj.id;
-            }
-        });
-
-        /* gather values from form */
-        let statusValue = $('select#status-select').val();
-        let titleValue = $('input#title').val();
-        let descValue = $('textarea#desc').val();
-        let typeValue = $('select#type-select').val();
-        let imgUrlValue = types[types.findIndex(x => x.name === typeValue)].imgUrl;
-        let altValue = types[types.findIndex(x => x.name === typeValue)].alt;
-        let gradedLevelValue = $('select#graded-level-select').val();
-        let streetNameValue = $('input#streetname').val();
-        let streetNumberValue = $('input#streetnumber').val();
-        let zipValue = $('input#zip').val();
-        let placeValue = $('input#place').val();
-        let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue};
-
-        /* create and replace temporary storage object (card) with details from form, adding an ID with +1 */
-        this.createTempStorage(maxId+1, statusValue, titleValue, descValue, typeValue, imgUrlValue, altValue, gradedLevelValue, this.formatDate(new Date()), addressValue);
-
-        /* conditional check to check if localstorage contains the cards array */
-        if (localStorage.getItem('cards') === null) {
-
-            /* if not, throw error */
-            alert("There was an error creating card due to not finding the cards array in localstorage");
-        } else {
-            
-            /* if it does, check if localstorage contains the card object */
-            if (localStorage.getItem('card') === null) {
-
-                /* if not, throw error */
-                alert("There was an error creating card due to not finding the card array in localstorage");
-            } else {
-
-                /* if it does, get and parse the card object, and set cards equal to function parameter */
-                let card = this.getAndParse('card');
-                let cards = arr;
-
-                /* add card to cards through the push method */
-                cards.push(card);
-
-                /* remove the cards array from localstorage, before readding it containing the new object */
-                localStorage.removeItem('cards');
-                localStorage.setItem('cards', JSON.stringify(cards));
-            }
-        }
-    }
-
-    /* delete card method is used to delete objects from the defined array */
-    /* it functions by finding the id of the object passedm abd deleting it from the array */
-    deleteCard(obj, arr) {
-
-        /* conditional check to check i localstorage contains the cards array */
-        if (localStorage.getItem('cards') === null) {
-
-            /* if not, throw error */
-            alert('There was an error deleting the card due to not finding the cards array in localstorage');
-        } else {
-
-            /* if it does, check if localstorage contains the card object */
-            if (localStorage.getItem('card') === null) {
-                
-                /* if not, throw error */
-                alert('There was an error deleting the card due to not finding the card array in localstorage')
-            } else {
-                
-                /* if it does, set cards equal to array passed into function */
-                let cards = arr;
-
-                /* find the index of the matching id's in the cards array */
-                let index = cards.findIndex(object => object.id === obj.getId());
-
-                /* replace object found with card created from form values */
-                cards.splice(index, 1);
-
-                /* remove the cards array from local storage, before readding it with new details */
-                localStorage.removeItem('cards');
-                localStorage.setItem('cards', JSON.stringify(cards));
-            }
-        }
     }
 }
 
