@@ -1,3 +1,25 @@
+/* DOCUMENT INFORMATION
+	- Document: PST Theme
+	- Version:  1.2.1
+	- Author:   Daniel Wendt Kjellid
+*/
+
+/* CSS DIRECTORY
+	1. Normalize
+	2. Base > x
+  3. Utility > x
+  4. Header > 375px
+  6. Hedaer > 768px
+  5. Body > 375px
+  6. Body > 768px
+  7. Body > 1024px
+  8. Footer
+*/
+
+/* ==========================================================================
+** NORMALIZE > X
+** ========================================================================== */
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -348,6 +370,10 @@
     display: none;
   }
 
+/* ==========================================================================
+** Base > X
+** ========================================================================== */
+
 body {
 	background-color: #F7FAFC;
   font-family: 'Roboto', sans-serif;
@@ -443,8 +469,9 @@ select:focus {
   outline: 0;
 }
 
-/* Utility classes
-========================================================================== */
+/* ==========================================================================
+** Utilitclasses > X
+** ========================================================================== */
 
 .hidden {
 	display: none;
@@ -530,8 +557,19 @@ select:focus {
   float: none;
 }
 
-/* Head
-========================================================================== */
+/* ==========================================================================
+** HEADER > 375px
+** ========================================================================== */
+
+/**************************************************************************
+* Header (> 375px): A - G
+/**************************************************************************/ 
+
+/* no classes */
+
+/**************************************************************************
+* Header (> 375px): H
+/**************************************************************************/ 
 
 /* header element */
 .header {
@@ -562,6 +600,16 @@ select:focus {
 	width: 1.5rem;
 }
 
+/**************************************************************************
+* Header (> 375px): I - M
+/**************************************************************************/
+
+/* no classes */
+
+/**************************************************************************
+* Header (> 375px): N
+/**************************************************************************/ 
+
 /* nav element */
 .nav {
 	background-color: #2D3748;
@@ -588,8 +636,27 @@ select:focus {
 	padding-bottom: 0.5rem;
 }
 
-/* tablet and up */
+/**************************************************************************
+* Header (> 375px): O - Z
+/**************************************************************************/
+
+/* no classes */
+
+/* ==========================================================================
+** HEADER > 768px
+** ========================================================================== */
+
 @media (min-width: 768px) {
+
+  /**************************************************************************
+  * Header (> 768px): A - G
+  /**************************************************************************/
+
+  /* no classes */
+
+  /**************************************************************************
+  * Header (> 768px): H
+  /**************************************************************************/
 
   /* create header flex, and push content to each side */
 	.header {
@@ -601,6 +668,16 @@ select:focus {
 	.header-item .menu-btn {
     display: none;
   }
+
+  /**************************************************************************
+  * Header (> 768px): I - M
+  /**************************************************************************/
+
+  /* no classes */
+
+  /**************************************************************************
+  * Header (> 768px): N
+  /**************************************************************************/
 
   /* create nav flex, center items vertically and remove border */
 	.nav {
@@ -624,36 +701,37 @@ select:focus {
   /* remove margin on nav items last child */
 	.nav .nav-item:last-child {
 		margin-right: 0;
-	}
+  }
+  
+  /**************************************************************************
+  * Header (> 768px): O - Z
+  /**************************************************************************/
+
+  /* no classes */
 }
 
-/* Body
-========================================================================== */
+/* ==========================================================================
+** BODY > 375px
+** ========================================================================== */
 
-/* create container for content */
-.container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+/**************************************************************************
+* Body (> 375px): A
+/**************************************************************************/
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-row-gap: 1rem;
-}
+/* no classes */
 
+/**************************************************************************
+* Body (> 375px): B
+**************************************************************************/
+
+/* banner container styling */
 .banner {
   background-color: #FFFFFF;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   height: 16rem;
 }
 
-.toolbar {
-  background-color: #FFFFFF;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  margin-bottom: 1rem;
-}
-
+/* breadcrumb container styling, adding padding */
 .breadcrumbs {
   padding-bottom: 1rem;
   padding-left: 1rem;
@@ -661,51 +739,7 @@ select:focus {
   padding-top: 1rem;
 }
 
-.breadcrumbs-previous {
-  color: #2D3748;
-  font-weight: 400;
-  margin-left: 0.5rem;
-}
-
-.breadcrumbs-current {
-  color: #2D3748;
-  font-weight: 900;
-  margin-left: 0.25rem;
-}
-
-.icn {
-  height: 2rem;
-  width: 2rem;
-}
-
-.icn circle {
-  fill: #E2E8F0;
-}
-
-.icn path {
-  fill: #A0AEC0;
-}
-
-.icn rect {
-  fill: #A0AEC0;
-}
-
-.icn.actions-bar circle {
-  fill: #2D3748;
-}
-
-.icn.actions-bar path {
-  fill: #FFFFFF;
-}
-
-.icn.actions-bar rect {
-  fill: #FFFFFF;
-}
-
-.cases-section {
-  padding-top: 1.5rem;
-}
-
+/* breadcrumb actions button container */
 .breadcrumbs-action {
   background-color: #FFFFFF;
   border-bottom: 0;
@@ -717,25 +751,23 @@ select:focus {
   padding-top: 1rem;
 }
 
-/* styling of section title */
-.section-title {
-	color: #2D3748;
-  font-size: 1.25rem;
-  font-weight: 400;
+/* adds bold text to current page */
+.breadcrumbs-current {
+  color: #2D3748;
+  font-weight: 900;
+  margin-left: 0.25rem;
 }
 
-.section-count {
-  background-color: #E2E8F0;
-  border-radius: 9999px;
-  color: #4A5568;
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-left: 0.75rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
+/* adds color and margin to previous site */
+.breadcrumbs-previous {
+  color: #2D3748;
+  font-weight: 400;
+  margin-left: 0.5rem;
 }
+
+/**************************************************************************
+* Body (> 375px): C
+/**************************************************************************/
 
 /* cards which represents cases */
 .case-card {
@@ -744,7 +776,7 @@ select:focus {
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
-/* image within care card */
+/* image within case card */
 .case-card-img {
 	border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -758,6 +790,7 @@ select:focus {
 	padding: 1rem;
 }
 
+/* styling if the case card has status "Ikke løst" */
 .case-card-content-status-negative {
   background-color: #FED7D7;
   border-radius: 9999px;
@@ -774,6 +807,7 @@ select:focus {
   text-transform: uppercase;
 }
 
+/* styling if the case card has status "Løst" */
 .case-card-content-status-positive {
   background-color: #C6F6D5;
   border-radius: 9999px;
@@ -835,21 +869,24 @@ select:focus {
   background-color: #EDF2F7;
 }
 
+/* styling for the bottom part of the case card, containg the "Se detaljer" and delete/edit button */
 .case-card-action-container {
   background-color: #EDF2F7;
   padding: 1rem;
 }
 
+/* styling for container contianing "Se detaljer" button */
 .case-card-action-btn-container {
   border-right: 1px solid #E2E8F0;
   padding: 1rem;
 }
 
+/* styling for container containing delete and edit button */
 .case-card-action-icn-container {
   padding: 1rem;
 }
 
-/* Show more details button */
+/* Styling for "Se detaljer" button/anchor */
 .case-card-action-btn {
 	background-color: #2D3748;
 	border-radius: 6px;
@@ -862,6 +899,7 @@ select:focus {
   padding-bottom: 0.75rem;
 }
 
+/* hover effect for "Se detaljer" button */
 .case-card-action-btn:hover {
   background-color: #1A202C;
 }
@@ -872,15 +910,28 @@ select:focus {
   background-color: #2D3748;
 }
 
-.actions-btn {
-  padding: 0;
+/* create container for content */
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.form-meta-text {
-  color: #718096;
-  font-style: italic;
+/* adds padding to section tags */
+.cases-section {
+  padding-top: 1.5rem;
 }
 
+/**************************************************************************
+* Body (> 375px): D
+***************************************************************************/
+
+/* no classes */
+
+/**************************************************************************
+* Body (> 375px): E
+***************************************************************************/
+
+/* container for edit form */
 .edit-form {
   background-color: #FFFFFF;
   border-radius: 6px;
@@ -889,6 +940,7 @@ select:focus {
   margin-top: 1rem;
 }
 
+/* container for edit form image */
 .edit-form-img {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -897,21 +949,13 @@ select:focus {
   width: 100%;
 }
 
-.form-section {
-  border-bottom: 1px solid #E2E8F0;
-  padding: 1rem;
-  margin-top: 0.75rem;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
+/* styling for the bottom part of the edit form, containg the "Lagre" button */
 .edit-form-footer {
   background-color: #EDF2F7;
   padding: 1rem;
 }
 
+/* styling for the "Lagre" button itself */
 .edit-form-submit-btn {
 	background-color: #2D3748;
 	border-radius: 6px;
@@ -923,10 +967,93 @@ select:focus {
   padding-bottom: 0.75rem;
 }
 
+/**************************************************************************
+* Body (> 375px): F
+***************************************************************************/
+
+/* styling for "Kort ble opprettet xx.xx.xxxx xx:xx" at the end of forms */
+.form-meta-text {
+  color: #718096;
+  font-style: italic;
+}
+
+/* container for form sections */
+.form-section {
+  border-bottom: 1px solid #E2E8F0;
+  padding: 1rem;
+  margin-top: 0.75rem;
+}
+
+/* container for form groups */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/**************************************************************************
+* Body (> 375px): G
+***************************************************************************/
+
+/* grid for displaying cards, taking up the entire screen on small devices */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 1rem;
+}
+
+/**************************************************************************
+* Body (> 375px): H
+***************************************************************************/
+
+/* no classes */
+
+/**************************************************************************
+* Body (> 375px): I
+***************************************************************************/
+
+/* default sizing for icons */
+.icn {
+  height: 2rem;
+  width: 2rem;
+}
+
+/* adds color to the circle element of an svg */
+.icn circle {
+  fill: #E2E8F0;
+}
+
+/* adds color to the icon itself */
+.icn path,
+.icn rect {
+  fill: #A0AEC0;
+}
+
+/* adds color to the circle element of an svg */
+.icn.actions-bar circle {
+  fill: #2D3748;
+}
+
+/* adds color to the icon itself */
+.icn.actions-bar path,
+.icn.actions-bar rect {
+  fill: #FFFFFF;
+}
+
+/**************************************************************************
+* Body (> 375px): J - L
+***************************************************************************/
+
+/* no classes */
+
+/**************************************************************************
+* Body (> 375px): M
+***************************************************************************/
+
+/* sets overflow hidden to body when modal is open to prevent that background is scrollable */
 .modal-open {
   overflow: hidden;
 }
 
+/* styling for modal background, adding a dark tint */
 .modal {
   background-color: rgba(0,0,0,0.4);
   left: 0;
@@ -938,6 +1065,7 @@ select:focus {
   width: 100%;
 }
 
+/* container and styling for the modal itself */
 .modal-content {
   background-color: #FFFFFF;
   border-radius: 6px;
@@ -947,26 +1075,31 @@ select:focus {
   margin-top: auto;
 }
 
+/* container for header of modal */
 .modal-header {
   padding: 1rem;
   border-bottom: 1px solid #E2E8F0;
 }
 
+/* styling for modal heading */
 .modal-header h1 {
   color: #2D3748;
   font-size: 1.25rem;
   font-weight: 400;
 }
 
+/* sizing for "x" icon for closing modal */
 .modal-header-close-icn {
   height: 1.5rem;
   widows: 1.5rem;
 }
 
+/* adding color to the path of the svg */
 .modal-header-close-icn path {
   fill: #A0AEC0;
 }
 
+/* addong styling to the bottom part of the modal usualy containing a button */
 .modal-footer {
   background-color: #EDF2F7;
   border-bottom-left-radius: 6px;
@@ -974,6 +1107,7 @@ select:focus {
   padding: 1rem; 
 }
 
+/* styling for modal action button */
 .modal-submit-btn {
   background-color: #2D3748;
   border-radius: 6px;
@@ -985,48 +1119,156 @@ select:focus {
   padding-bottom: 0.75rem;
 }
 
+/**************************************************************************
+* Body (> 375px): N - R
+***************************************************************************/
+
+/* no classes */
+
+/**************************************************************************
+* Body (> 375px): S
+***************************************************************************/
+
+/* styling of section title */
+.section-title {
+	color: #2D3748;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+/* styling for pill containing amount of cases */
+.section-count {
+  background-color: #E2E8F0;
+  border-radius: 9999px;
+  color: #4A5568;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-left: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+/**************************************************************************
+* Body (> 375px): T
+***************************************************************************/
+
+/* styling for toolbar bellow header. Contains breadcrumbs and action buttons */
+.toolbar {
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-bottom: 1rem;
+}
+
+/**************************************************************************
+* Body (> 375px): U - Z
+***************************************************************************/
+
+/* no classes */
+
+/* ==========================================================================
+** BODY > 768px
+** ========================================================================== */
+
 @media (min-width: 768px) {
 
+  /**************************************************************************
+  * Body (> 768px): A - D
+  ***************************************************************************/
+
+  /* no classes */
+
+  /**************************************************************************
+  * Body (> 768px): E
+  ***************************************************************************/
+
+  /* change edit for so its only 80% of the page, and centered */
+  .edit-form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    width: 80%;
+  }
+
+  /**************************************************************************
+  * Body (> 768px): F
+  ***************************************************************************/
+
+  /* no classes */
+
+  /**************************************************************************
+  * Body (> 768px): G
+  ***************************************************************************/
+
+  /* change grid to fill width with two fractions instead of one */
   .grid {
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 1rem;
   }
 
-  .edit-form {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    width: 80%;
-  }
-
-  .misc-section {
-    display: flex;
-  }
-
+  /* move grade group in form next to status instead of under */
   .grade-group {
     margin-right: 0.5rem;
     width: 50%;
   }
 
-  .status-group {
-    width: 50%;
+  /**************************************************************************
+  * Body (> 768px): H - L
+  ***************************************************************************/
+
+  /* no classes */
+
+  /**************************************************************************
+  * Body (> 768px): M
+  ***************************************************************************/
+
+  /* place grade group and section group next to each other on larger devices */
+  .misc-section {
+    display: flex;
   }
 
+  /* change edit for so its only 80% of the page, and centered */
   .modal-content {
     margin-left: auto;
     margin-right: auto;
     width: 80%;
   }
+
+  /**************************************************************************
+  * Body (> 768px): N - R
+  ***************************************************************************/
+
+  /* no classes */
+
+  /**************************************************************************
+  * Body (> 768px): S
+  ***************************************************************************/
+  
+  /* place status group and section group next to each other on larger devices */
+  .status-group {
+    width: 50%;
+  }
 }
+
+/* ==========================================================================
+** BODY > 1024px
+** ========================================================================== */
 
 @media (min-width: 1024px) {
 
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: auto;
-  }
+  /**************************************************************************
+  * Body (> 1024px): A - D
+  ***************************************************************************/
 
+  /* no classes */
+
+  /**************************************************************************
+  * Body (> 1024px): E
+  ***************************************************************************/
+
+  /* make form 60% of width and center it */
   .edit-form {
     margin-left: auto;
     margin-right: auto;
@@ -1035,16 +1277,48 @@ select:focus {
     width: 60%;
   }
 
+  /**************************************************************************
+  * Body (> 1024px): F
+  ***************************************************************************/
+
+  /* no classes */
+
+  /**************************************************************************
+  * Body (> 1024px): G
+  ***************************************************************************/
+
+  /* make grid fill width with 3 fractions */
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: auto;
+  }
+
+  /**************************************************************************
+  * Body (> 1024px): H - L
+  ***************************************************************************/
+
+  /* no classes */
+
+  /**************************************************************************
+  * Body (> 1024px): M
+  ***************************************************************************/
+
+  /* make model 60% of width and center it */
   .modal-content {
     margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;
     width: 60%;
   }
+
+  /**************************************************************************
+  * Body (> 1024px): N - Z
+  ***************************************************************************/
 }
 
-/* Foot
-========================================================================== */
+/* ==========================================================================
+** Footer > *
+** ========================================================================== */
 
 .footer {
 	background-color: #2D3748;
