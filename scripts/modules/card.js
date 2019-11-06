@@ -1,5 +1,6 @@
 class Card {
 
+    /* Card constructor */
     constructor(id, status, title, desc, type, imgUrl, alt, graded, date, address) {
         this.id = id;
         this.status = status;
