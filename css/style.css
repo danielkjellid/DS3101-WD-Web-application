@@ -353,6 +353,12 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+button[type=button] {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
 label {
   color: #718096;
   display: block;
@@ -640,7 +646,6 @@ select:focus {
   background-color: #FFFFFF;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   height: 16rem;
-  margin-bottom: 1rem;
 }
 
 .toolbar {
@@ -695,6 +700,10 @@ select:focus {
 
 .icn.actions-bar rect {
   fill: #FFFFFF;
+}
+
+.cases-section {
+  padding-top: 1.5rem;
 }
 
 .breadcrumbs-action {

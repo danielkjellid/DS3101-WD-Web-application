@@ -288,15 +288,12 @@ if (typeof(Storage) !== 'undefined') {
             
             /* conditional check to append the cards correctly */
             if (item.status == 'Ikke løst') {
-                utility.generateIndexPage(card, 'div.not-solved', cards);
+                utility.generateIndexPage(card, 'div.not-solved', types, gradedLevels, statuses, cards);
 
             } else {
-                utility.generateIndexPage(card, 'div.solved', cards);
+                utility.generateIndexPage(card, 'div.solved', types, gradedLevels, statuses, cards);
             }
         });
-
-        $('span.count-not-solved').html(cards.filter(obj => obj.status == 'Ikke løst').length);
-        $('span.count-solved').html(cards.filter(obj => obj.status == 'Løst').length);
         
     } else if ($('body.edit')[0]){
 
@@ -319,18 +316,16 @@ if (typeof(Storage) !== 'undefined') {
 
             /* conditional check to append the cards correctly */
             if (item.status == 'Ikke løst') {
-                utility.generateCardsPage(card, 'div.not-solved', cards);
+                utility.generateCardsPage(card, 'div.not-solved', types, gradedLevels, statuses, cards);
 
             } else {
-                utility.generateCardsPage(card, 'div.solved', cards);
+                utility.generateCardsPage(card, 'div.solved', types, gradedLevels, statuses, cards);
             }
         });
 
         utility.generateAddForm('main', types, gradedLevels, statuses, cards);
-
-        $('span.count-not-solved').html(cards.filter(obj => obj.status == 'Ikke løst').length);
-        $('span.count-solved').html(cards.filter(obj => obj.status == 'Løst').length);
     }
+
 } else {
     /* tell user to change or upgrade browser if support for localstorage is absent */
     alert('Browser does not support local storage. Please upgrade or change browser.');
