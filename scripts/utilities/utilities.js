@@ -470,18 +470,20 @@ class Utility {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-section misc-section">
-                                        <div class="form-group grade-group">
-                                            <label for="graded-level-select">Graderingsnivå</label>
-                                            <select id="graded-level-select" class="w-1 graded-level-select">
-                                                <!-- Options created by DOM -->
-                                            </select>
-                                        </div>
-                                        <div class="form-group status-group">
-                                            <label for="status-select">Status</label>
-                                            <select id="status-select" class="w-1 status-select">
-                                                <!-- Options created by DOM -->
-                                            </select>
+                                    <div class="form-section">
+                                        <div class="misc-section">
+                                            <div class="form-group grade-group">
+                                                <label for="graded-level-select">Graderingsnivå</label>
+                                                <select id="graded-level-select" class="w-1 graded-level-select">
+                                                    <!-- Options created by DOM -->
+                                                </select>
+                                            </div>
+                                            <div class="form-group status-group">
+                                                <label for="status-select">Status</label>
+                                                <select id="status-select" class="w-1 status-select">
+                                                    <!-- Options created by DOM -->
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="flex justify-center">
                                             <span class="form-meta-text">Opprettet ${obj.getDate()}</span>
@@ -717,18 +719,20 @@ class Utility {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-section misc-section">
-                                                    <div class="form-group grade-group">
-                                                        <label for="graded-level-select">Graderingsnivå</label>
-                                                        <select id="graded-level-select" class="w-1 graded-level-select">
-                                                            <!-- Options created by DOM -->
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group status-group">
-                                                        <label for="status-select">Status</label>
-                                                        <select id="status-select" class="w-1 status-select">
-                                                            <!-- Options created by DOM -->
-                                                        </select>
+                                                <div class="form-section">
+                                                    <div class="misc-section">
+                                                        <div class="form-group grade-group">
+                                                            <label for="graded-level-select">Graderingsnivå</label>
+                                                            <select id="graded-level-select" class="w-1 graded-level-select">
+                                                                <!-- Options created by DOM -->
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group status-group">
+                                                            <label for="status-select">Status</label>
+                                                            <select id="status-select" class="w-1 status-select">
+                                                                <!-- Options created by DOM -->
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                     <div class="flex justify-center">
                                                         <span class="form-meta-text">Opprettet ${obj.getDate()}</span>

@@ -975,6 +975,7 @@ select:focus {
 .form-meta-text {
   color: #718096;
   font-style: italic;
+  margin-top: 0.5rem;
 }
 
 /* container for form sections */
