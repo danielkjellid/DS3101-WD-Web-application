@@ -581,11 +581,6 @@ main {
 .header {
 	background-color: #2D3748;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
 }
 
 /* item within header element */
@@ -735,10 +730,6 @@ main {
 /**************************************************************************
 * Body (> 375px): B
 **************************************************************************/
-
-.banner {
-  padding-top: 4.5rem;
-}
 
 /* annimation for fading in banner items */
 .banner-animation {
@@ -1059,7 +1050,7 @@ main {
 
 /* adds padding to section tags */
 .cases-section {
-  padding-top: 4.5rem;
+  padding-top: 1.5rem;
 }
 
 /**************************************************************************
@@ -1224,7 +1215,7 @@ main {
 ***************************************************************************/
 
 .main {
-  padding-top: 4.5rem;
+  padding-top: 1.5rem;
 }
 
 /* sets overflow hidden to body when modal is open to prevent that background is scrollable */
@@ -1338,10 +1329,6 @@ main {
   background-color: #FFFFFF;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   margin-bottom: 1rem;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 4.5rem;
 }
 
 /**************************************************************************
