@@ -55,15 +55,15 @@ class Utility {
 
     /* method for opening and closing the burger menu on small devices */
     /* functions by adding the 'block' class to nav with class nav, and removes/adds the 'hidden' class form the nav if it exists */
-    toggleMenu() {
+    toggleMenu(container) {
 
         /* conditional check to figure out wheter to add or remove 'hidden' and replacing it with 'block', or the other way around */
-        if ($('nav.nav').hasClass('hidden')) {
-            $('nav.nav').removeClass('hidden');
-            $('nav.nav').addClass('block');
+        if (container.hasClass('hidden')) {
+            container.removeClass('hidden');
+            container.addClass('block');
         } else {
-            $('nav.nav').removeClass('block');
-            $('nav.nav').addClass('hidden');
+            container.removeClass('block');
+            container.addClass('hidden');
         }
     }
 
@@ -248,7 +248,7 @@ class Utility {
     generateIndexPage(obj, container, types, gradedLevels, statuses, arr) {
 
         /* function for toggleing menu on smaller screens. Calles method defined in class */
-        let toggleMenu = () => { return this.toggleMenu(); }
+        let toggleMenu = () => { return this.toggleMenu($('nav.nav')); }
 
         /* function for generating edit form inside modal. Calls generateEditForm method defined in class */
         let generateEditForm = () => { return this.generateEditForm(obj, 'main', types, gradedLevels, statuses, arr);}
@@ -399,7 +399,7 @@ class Utility {
     generateEditPage(obj, container, types, gradedLevels, statuses, arr) {
 
         /* function for toggleing menu by calling the toggleMenu method */
-        let toggleMenu = () => { return this.toggleMenu(); }
+        let toggleMenu = () => { return this.toggleMenu($('nav.nav')); }
 
         /* function for looping through parsed localstorage objects, and appending the names to select container */
         let loopAndAppend = (items, func, container) => {
