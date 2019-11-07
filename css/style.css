@@ -1090,14 +1090,14 @@ main {
 
 /* styling for the "Lagre" button itself */
 .edit-form-submit-btn {
-	background-color: #2D3748;
+	background-color: #2D3748 !important;
 	border-radius: 6px;
   color: #FFFFFF;
   display: block;
   text-align: center;
 	width: 100%;
-	padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+	padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
 }
 
 /**************************************************************************
