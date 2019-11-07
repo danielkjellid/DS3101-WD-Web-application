@@ -101,7 +101,7 @@ class Utility {
         let streetNumberValue = $('input.streetnumber').val();
         let zipValue = $('input.zip').val();
         let placeValue = $('input.place').val();
-        let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue};
+        let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue, imgUrl: obj.getAddressImg(), imgAlt: obj.getAddressImgAlt()};
 
         /* create and replace temporary storage object (card) with details from form by calling the createTempStorage method */
         this.createTempStorage(obj.getId(), statusValue, titleValue, descValue, typeValue, imgUrlValue, altValue, gradedLevelValue, obj.getDate(), addressValue);
