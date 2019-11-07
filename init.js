@@ -240,7 +240,6 @@ const cardsArr = [
     },   
 ];
 
-
 /* conditional check to check if browser supports localstorage */
 if (typeof(Storage) !== 'undefined') {
 

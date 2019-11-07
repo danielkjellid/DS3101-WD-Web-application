@@ -373,7 +373,7 @@ class Utility {
 
                 /* fade out card deleted */
                 $('article.case-card-' + obj.getId()).fadeOut('slow', function() {
-
+                    tempStorage();
                     deleteCard(); /* delete it from the cards array by running the deleteCard function/method */
                     updateCount(); /* update status count */
                 });
