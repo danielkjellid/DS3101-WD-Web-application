@@ -518,8 +518,7 @@ class Utility {
         });
 
         /* event handler for submitting form */
-        $('#edit-form').submit(function(e) {
-            e.preventDefault();
+        $('#edit-form').submit(function() {
             saveCard(); /* run saveCard function/method */
         });
     }
@@ -637,8 +636,7 @@ class Utility {
         });
 
         /* event handler for submitting form */
-        $('#add-form').submit(function(e) {
-            e.preventDefault();
+        $('#add-form').submit(function() {
             addCard(); /* runs addCard function/metod */
         });
     }
