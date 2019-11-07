@@ -764,6 +764,127 @@ class Utility {
             saveCard(); /* runs saveCard function/method */
         });
     }
+
+    generateBanner(arr, container) {
+
+        let index = 1;
+
+        let nextSlide = (n) => {
+            bannerSlides(index += n);
+        }
+
+        let currentSlide = (n) => {
+            bannerSlides(index = n);
+        }
+
+        let bannerSlides = (n) => {
+            let slides = $('div.banner-slide');
+            let dots = $('span.dot');
+
+            if (n > slides.length) {
+                index = 1;
+            }
+
+            if (n < 1) {
+                index = slides.length;
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(' current', '');
+            }
+
+            slides[index-1].style.display = 'block';
+            dots[index-1].className += ' current';
+        }
+        
+        let generateSlides = (arr, container) => {
+            arr.forEach(function(item) {
+                if (item.id == 1) {
+                    let generateSlide = `<div class="banner-slide">
+                                            <!-- preserves UD by adding alt text to image -->
+                                            <img class="banner-img" src="${item.imgUrl}" alt="${item.alt}">
+                                            <div class="banner-caption">
+                                                <h1>${item.name}</h1>
+                                            </div>
+                                        </div>`;
+
+                    $(container).append(generateSlide);
+                } else {
+                   let generateSlide = `<div class="banner-slide hidden">
+                                            <!-- preserves UD by adding alt text to image -->
+                                            <img class="banner-img" src="${item.imgUrl}" alt="${item.alt}">
+                                            <div class="banner-caption">
+                                                <h1>${item.name}</h1>
+                                            </div>
+                                        </div>`;
+
+                   $(container).append(generateSlide); 
+                }
+            });
+        }
+
+        let generateDots = (arr, container) => {
+            arr.forEach(function(item) {
+                if (item.id == 1) {
+                    let generateDot = `<span class="dot current"></span>`;
+                    
+                    $(container).append(generateDot);
+                } else {
+                    let generateDot = `<span class="dot"></span>`;
+
+                    $(container).append(generateDot);
+                }
+            });
+        }
+
+        let generateBanner = `<div class="banner-container">
+                                <div class="banner-slides">
+                                    <!-- slides created by DOM -->
+                                </div>
+                                <div class="banner-meta">
+                                    <div class="banner-btns">
+                                        <button class="prev-slide">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-cheveron-left-circle">
+                                                <circle cx="12" cy="12" r="10" class="primary"/>
+                                                <path class="secondary" d="M13.7 15.3a1 1 0 0 1-1.4 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.4 1.4L10.42 12l3.3 3.3z"/>
+                                            </svg>
+                                        </button>
+                                        <button class="next-slide">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-cheveron-right-circle">
+                                                <circle cx="12" cy="12" r="10" class="primary"/>
+                                                <path class="secondary" d="M10.3 8.7a1 1 0 0 1 1.4-1.4l4 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-1.4-1.4l3.29-3.3-3.3-3.3z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="banner-dots">
+                                        <!-- dots created by DOM -->
+                                    </div>
+                                </div>
+                            </div>`
+
+        $(container).append(generateBanner);
+
+        generateSlides(arr, $('div.banner-slides'));
+        generateDots(arr, 'div.banner-dots');
+
+        bannerSlides(index);
+
+        $('button.prev-slide').on('click', function() {
+            nextSlide(-1);
+        });
+
+        $('button.next-slide').on('click', function() {
+            nextSlide(1);
+        });
+
+        setInterval(function() {
+            nextSlide(1)
+        }, 5000);
+    }
 }
 
 export default Utility;

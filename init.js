@@ -296,6 +296,8 @@ if (typeof(Storage) !== 'undefined') {
                 utility.generateIndexPage(card, 'div.solved', types, gradedLevels, statuses, cards);
             }
         });
+
+        utility.generateBanner(types, 'div.banner');
     
     /* else if the body has the class 'edit' */
     } else if ($('body.edit')[0]){
