@@ -2,8 +2,6 @@
 import Utility from './scripts/utilities/utilities.js';
 import Card from './scripts/modules/card.js';
 
-//localStorage.clear();
-
 const utility = new Utility('utility');
 
 /* types of activities */
