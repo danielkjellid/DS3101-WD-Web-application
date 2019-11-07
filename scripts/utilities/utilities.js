@@ -642,7 +642,7 @@ class Utility {
         });
     }
 
-    /* generate edit form methos is used for generating form within modal */ 
+    /* generate edit form method is used for generating form within modal */ 
     /* the form populated with values/content of card clicked */
     generateEditForm(obj, container, types, gradedLevels, statuses, arr) {
 
@@ -765,46 +765,54 @@ class Utility {
         });
     }
 
+    /* generate banner method is used for generating banner on the front page */
+    /* generates slider elements based in the types array, and displays various task categories */
     generateBanner(arr, container) {
 
+        /* set index to one so it displays the first slider element */
         let index = 1;
 
+        /* function for changing slide to the next one in line */
         let nextSlide = (n) => {
+            /* it gets the current index, and adds function parameter number */
             bannerSlides(index += n);
         }
 
-        let currentSlide = (n) => {
-            bannerSlides(index = n);
-        }
-
+        /* function for getting and changing slides */
         let bannerSlides = (n) => {
+            /* get all div's with the class 'banner-slide' and all spans with the class 'dot' */
             let slides = $('div.banner-slide');
             let dots = $('span.dot');
 
+            /* when the banner has went through all slides, reset to first slide */
             if (n > slides.length) {
                 index = 1;
-            }
-
-            if (n < 1) {
+            } else  if (n < 1){
                 index = slides.length;
             }
 
+            /* hide all slides which is not displayed */
             for (let i = 0; i < slides.length; i++) {
                 slides[i].style.display = 'none';
             }
 
+            /* add class current to dot number matching slide number */
             for (let i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(' current', '');
             }
 
+            /* show slide which is on display, and set corresponding dot to 'current' */
             slides[index-1].style.display = 'block';
             dots[index-1].className += ' current';
         }
         
+        /* function for generating all slides based on the types array */
         let generateSlides = (arr, container) => {
+            /* iterate through array */
             arr.forEach(function(item) {
+                /* if item in array has id of 1, we remove the hidden (display none) class */
                 if (item.id == 1) {
-                    let generateSlide = `<div class="banner-slide">
+                    let generateSlide = `<div class="banner-slide banner-animation">
                                             <!-- preserves UD by adding alt text to image -->
                                             <img class="banner-img" src="${item.imgUrl}" alt="${item.alt}">
                                             <div class="banner-caption">
@@ -812,9 +820,12 @@ class Utility {
                                             </div>
                                         </div>`;
 
+                    /* append slide to appropirate container */
                     $(container).append(generateSlide);
+                
+                /* if item in array does not have the id 1, generate slides, but with hidden class */
                 } else {
-                   let generateSlide = `<div class="banner-slide hidden">
+                    let generateSlide = `<div class="banner-slide hidden banner-animation">
                                             <!-- preserves UD by adding alt text to image -->
                                             <img class="banner-img" src="${item.imgUrl}" alt="${item.alt}">
                                             <div class="banner-caption">
@@ -822,38 +833,46 @@ class Utility {
                                             </div>
                                         </div>`;
 
-                   $(container).append(generateSlide); 
+                    /* append slide to appropirate container */
+                    $(container).append(generateSlide); 
                 }
             });
         }
 
+        /* function for generating correct amount of dots */
         let generateDots = (arr, container) => {
             arr.forEach(function(item) {
+                /* if item in array has id of 1, we set the corresponding dot as 'current' (active) */
                 if (item.id == 1) {
                     let generateDot = `<span class="dot current"></span>`;
                     
+                    /* append dot to appropirate container */
                     $(container).append(generateDot);
+                
+                /* if item does not have the id 1, generate a normal dot */
                 } else {
                     let generateDot = `<span class="dot"></span>`;
 
+                    /* append dot to appropirate container */
                     $(container).append(generateDot);
                 }
             });
         }
 
+        /* variable for storing banner structure, formatted for readability */
         let generateBanner = `<div class="banner-container">
                                 <div class="banner-slides">
                                     <!-- slides created by DOM -->
                                 </div>
                                 <div class="banner-meta">
                                     <div class="banner-btns">
-                                        <button class="prev-slide">
+                                        <button type="button" class="prev-slide">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-cheveron-left-circle">
                                                 <circle cx="12" cy="12" r="10" class="primary"/>
                                                 <path class="secondary" d="M13.7 15.3a1 1 0 0 1-1.4 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.4 1.4L10.42 12l3.3 3.3z"/>
                                             </svg>
                                         </button>
-                                        <button class="next-slide">
+                                        <button type="button" class="next-slide">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-cheveron-right-circle">
                                                 <circle cx="12" cy="12" r="10" class="primary"/>
                                                 <path class="secondary" d="M10.3 8.7a1 1 0 0 1 1.4-1.4l4 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-1.4-1.4l3.29-3.3-3.3-3.3z"/>
@@ -866,13 +885,17 @@ class Utility {
                                 </div>
                             </div>`
 
+        /* append banner to appropirate container */
         $(container).append(generateBanner);
 
+        /* call functions to generate slides and dots */
         generateSlides(arr, $('div.banner-slides'));
         generateDots(arr, 'div.banner-dots');
 
+        /* call function to start banner carrousel */
         bannerSlides(index);
 
+        /* event handlers for clicking next/prev slide buttons */
         $('button.prev-slide').on('click', function() {
             nextSlide(-1);
         });
@@ -881,6 +904,7 @@ class Utility {
             nextSlide(1);
         });
 
+        /* interval loop to change slide every 5 seconds */
         setInterval(function() {
             nextSlide(1)
         }, 5000);

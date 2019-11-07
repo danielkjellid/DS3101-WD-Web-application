@@ -382,6 +382,7 @@ body {
 button[type=button] {
   border: none;
   background-color: transparent;
+  cursor: pointer;
   padding: 0;
 }
 
@@ -724,24 +725,100 @@ select:focus {
 * Body (> 375px): B
 **************************************************************************/
 
+/* annimation for fading in banner items */
+.banner-animation {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-direction: alternate;
+  animation-iteration-count: initial;
+}
+
+/* styling for the next and previous slider button container */
+.banner-btns {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 40%;
+  width: 100%;
+}
+
+/* styrling for the button itself */
+.banner-btns button {
+  cursor: pointer;
+  height: 2.5rem;
+  transition: 0.8s ease;
+  width: 2.5rem;
+}
+
+/* styling for circle surrounding chevron */
+.banner-btns button circle {
+  fill: #E2E8F0;
+}
+
+/* styling for chevron istelf */
+.banner-btns button path {
+  fill: #A0AEC0;
+}
+
+/* styling for icon circle hover state */
+.banner-btns button circle:hover {
+  fill: #CBD5E0;
+}
+
+/* styling for icon hover state */
+.banner-btns button path:hover {
+  fill: #718096;
+}
+
+/* styling for banner container */
 .banner-container {
-  background-color: lightpink;
+  background-color: #f6f9fc;
   height: 13rem;
   margin: auto;
   position: relative;
   width: 100%;
 }
 
+/* styling for the dots beneth slider container */
+.banner-dots {
+  align-items: center;
+  bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+}
+
+/* styling for dot itself */
+.banner-dots .dot {
+  background-color: #CBD5E0;
+  border-radius: 9999px;
+  height: 1rem;
+  opacity: .6;
+  margin-right: 0.5rem;
+  width: 1rem;
+}
+
+/* change margin on last dot */
+.banner-dots .dot.current:last-child {
+  margin-right: 0;
+}
+
+/* styling for current and hover state */
+.banner-dots .dot.current:hover,
+.banner-dots .dot.current {
+  background-color: #718096;
+}
+
+/* setting height of slide item */
 .banner-slide {
   height: 100%;
 }
 
-.banner-slide .banner-img {
-  height: 13rem;
-  object-fit: cover;
-  width: 100%;
-}
-
+/* styling for caption container */
 .banner-slide .banner-caption {
   align-items: center;
   display: flex;
@@ -752,6 +829,7 @@ select:focus {
   width: 100%;
 }
 
+/* styling for caption itself */
 .banner-slide .banner-caption h1{
   background-color: rgba(0,0,0,0.3);
   color: #FFFFFF;
@@ -761,159 +839,23 @@ select:focus {
   padding: 1rem;
 }
 
-.banner-btns {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: 40%;
-  width: 100%;
-}
-
-.banner-btns button {
-  cursor: pointer;
-  height: 3rem;
-  transition: 0.8s ease;
-  width: 3rem;
-}
-
-
-.banner-btns button circle {
-  fill: #E2E8F0;
-}
-
-.banner-btns button path {
-  fill: #A0AEC0;
-}
-
-.banner-btns button circle:hover {
-  fill: #CBD5E0;
-}
-
-.banner-btns button path:hover {
-  fill: #718096;
-}
-
-.banner-dots {
-  align-items: center;
-  bottom: 1.5rem;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  width: 100%;
-}
-
-.banner-dots .dot {
-  background-color: #CBD5E0;
-  border-radius: 9999px;
-  height: 1rem;
-  opacity: .6;
-  margin-right: 0.5rem;
-  width: 1rem;
-}
-
-.banner-dots .dot.current:last-child {
-  margin-right: 0;
-}
-
-.banner-dots .dot.current:hover,
-.banner-dots .dot.current {
-  background-color: #718096;
-}
-
-
-/* banner container styling */
-/*
-.banner {
-  background-color: white;
-  margin: auto;
-  position: relative;
-}
-
-.banner .img-container {
-  height: 100%;
-}
-
-.img-container-img {
-  height: auto;
+/* styling for image */
+.banner-slide .banner-img {
+  height: 13rem;
   object-fit: cover;
-  position: relative;
   width: 100%;
 }
 
-.banner-caption {
-  color: red;
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  width: 100%;
+/* definition of animation fadeIn which is used to fade in banner slider elements */
+@keyframes fadeIn {
+  from {
+      transform: translate3d(-99%, 0, 0);
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+    }
 }
-
-.banner .btn-container {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: 50%;
-  width: 100%;
-}*/
-
-/* next and previous image buttons */
-/*
-.prev-btn, .next-btn {
-  cursor: pointer;
-  height: 2.5rem;
-  width: 2.5rem;
-}
-
-.prev-btn circle, 
-.next-btn circle {
-  fill: #E2E8F0;
-}
-
-.prev-btn path,
-.next-btn path {
-  fill: #A0AEC0;
-}
-
-.prev-btn circle:hover, 
-.next-btn circle:hover {
-  fill: #CBD5E0;
-}
-
-.prev-btn path:hover,
-.next-btn path:hover {
-  fill: #718096;
-}
-
-.banner .dot-container {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 80%;
-  width: 100%;
-}
-
-.banner .dot-container span.dot {
-  background-color: #A0AEC0;
-  border-radius: 9999px;
-  cursor: pointer;
-  height: 1rem;
-  margin-right: 0.5rem;
-  opacity: .60;
-  width: 1rem;
-}
-
-.banner .dot-container span.dot:last-child {
-  margin-right: 0;
-}
-
-.banner .dot-container span.dot:hover,
-.banner .dot-container span.dot.active {
-  background-color: #4A5568;
-}*/
-
 
 /* breadcrumb container styling, adding padding */
 .breadcrumbs {

@@ -297,6 +297,7 @@ if (typeof(Storage) !== 'undefined') {
             }
         });
 
+        /* generate banner */
         utility.generateBanner(types, 'div.banner');
     
     /* else if the body has the class 'edit' */
