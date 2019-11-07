@@ -41,5 +41,18 @@
         </footer>
         <script type="module" defer src="template-loader.js"></script>
         <script type="module" defer src="init.js"></script>
+        <script>
+            function toggleMenu() {
+
+                /* conditional check to figure out wheter to add or remove 'hidden' and replacing it with 'block', or the other way around */
+                if ($('nav.nav').hasClass('hidden')) {
+                    $('nav.nav').removeClass('hidden');
+                    $('nav.nav').addClass('block');
+                } else {
+                    $('nav.nav').removeClass('block');
+                    $('nav.nav').addClass('hidden');
+                }
+            }
+        </script>
     </body>
 </html>

@@ -63,15 +63,15 @@ class Utility {
 
     /* method for opening and closing the burger menu on small devices */
     /* functions by adding the 'block' class to nav with class nav, and removes/adds the 'hidden' class form the nav if it exists */
-    toggleMenu(container) {
+    toggleMenu() {
 
         /* conditional check to figure out wheter to add or remove 'hidden' and replacing it with 'block', or the other way around */
-        if (container.hasClass('hidden')) {
-            container.removeClass('hidden');
-            container.addClass('block');
+        if ($('nav.nav').hasClass('hidden')) {
+            $('nav.nav').removeClass('hidden');
+            $('nav.nav').addClass('block');
         } else {
-            container.removeClass('block');
-            container.addClass('hidden');
+            $('nav.nav').removeClass('block');
+            $('nav.nav').addClass('hidden');
         }
     }
 
@@ -257,9 +257,6 @@ class Utility {
     /* takes arguments such as a single card object, which container to append to, types array, gradedLevels array, statuses array and array containing all card objects */
     generateIndexPage(obj, container, types, gradedLevels, statuses, arr) {
 
-        /* function for toggleing menu on smaller screens. Calles method defined in class */
-        let toggleMenu = () => { return this.toggleMenu($('nav.nav')); }
-
         /* function for generating edit form inside modal. Calls generateEditForm method defined in class */
         let generateEditForm = () => { return this.generateEditForm(obj, 'main', types, gradedLevels, statuses, arr);}
 
@@ -389,11 +386,6 @@ class Utility {
                 });
             }
         });
-
-        /* event handler for clicking burker menu on small devices */
-        $('button.menu-btn').on('click', function() {
-            toggleMenu(); /* run toggleMenu function/method */
-        });
     }
 
     /* generate cards page method is used to create and append all card objects in localstorage */
@@ -407,9 +399,6 @@ class Utility {
     /* generate edit page method is used for generating a form view when a card is clicked */
     /* generates form based on temporary storage object in localstorage */
     generateEditPage(obj, container, types, gradedLevels, statuses, arr) {
-
-        /* function for toggleing menu by calling the toggleMenu method */
-        let toggleMenu = () => { return this.toggleMenu($('nav.nav')); }
 
         /* function for looping through parsed localstorage objects, and appending the names to select container */
         let loopAndAppend = (items, func, container) => {
@@ -531,11 +520,6 @@ class Utility {
         /* event handler for submitting form */
         $('#edit-form').submit(function() {
             saveCard(); /* run saveCard function/method */
-        });
-
-        /* event handler for clicking burker menu on small devices */
-        $('button.menu-btn').on('click', function() {
-            toggleMenu(); /* run toggleMenu function/method */
         });
     }
 
