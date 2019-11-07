@@ -1215,10 +1215,6 @@ main {
 * Body (> 375px): M
 ***************************************************************************/
 
-.main {
-  padding-top: 1.5rem;
-}
-
 /* sets overflow hidden to body when modal is open to prevent that background is scrollable */
 .modal-open {
   overflow: hidden;
