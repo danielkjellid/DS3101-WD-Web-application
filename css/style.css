@@ -377,6 +377,7 @@
 body {
 	background-color: #F7FAFC;
   font-family: 'Roboto', sans-serif;
+  height: 100vh;
 }
 
 button[type=button] {
