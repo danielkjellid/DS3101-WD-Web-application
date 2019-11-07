@@ -103,6 +103,9 @@ class Utility {
         let placeValue = $('input.place').val();
         let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue, imgUrl: obj.getAddressImg(), imgAlt: obj.getAddressImgAlt()};
 
+        console.log(obj.getAddressImgUrl());
+        console.log(obj.getAddressImgAlt());
+
         /* create and replace temporary storage object (card) with details from form by calling the createTempStorage method */
         this.createTempStorage(obj.getId(), statusValue, titleValue, descValue, typeValue, imgUrlValue, altValue, gradedLevelValue, obj.getDate(), addressValue);
 
@@ -518,7 +521,8 @@ class Utility {
         });
 
         /* event handler for submitting form */
-        $('#edit-form').submit(function() {
+        $('#edit-form').submit(function(e) {
+            e.preventDefault();
             saveCard(); /* run saveCard function/method */
         });
     }
