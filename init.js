@@ -74,172 +74,7 @@ const statusesArr = [
     }
 ];
 
-/* array of default cards */
-const cardsArr = [
-    {
-        id: 1, 
-        status: statusesArr[0].name, 
-        title: 'Ransaking av leilighet',
-        desc: 'Ransaking av leilighet til kjenning. Mulig terrorlink.',
-        type: typesArr[2].name,
-        imgUrl: typesArr[2].imgUrl,
-        alt: typesArr[2].alt,
-        graded: gradedLevelsArr[0].name, 
-        date: utility.formatDate(new Date()), 
-        address: 
-            { 
-                streetname: 'Hausmansgate', 
-                streetnumber: '21', 
-                zip: '0182', 
-                place: 'Oslo'
-            }
-    },
-    {
-        id: 2, 
-        status: statusesArr[0].name, 
-        title: 'Overvåking av person',
-        desc: 'Overvåking og innhenting av informasjon om Navn Navnesen.', 
-        type: typesArr[0].name,
-        imgUrl: typesArr[0].imgUrl,
-        alt: typesArr[0].alt,
-        graded: gradedLevelsArr[1].name, 
-        date: utility.formatDate(new Date()), 
-        address:
-            { 
-                streetname: 'Solheimveien', 
-                streetnumber: '3', 
-                zip: '1473', 
-                place: 'Lørenskog'
-            }
-    },
-    {
-        id: 3, 
-        status: statusesArr[0].name, 
-        title: 'Samtale med elev',
-        desc: 'Elev viser tendenser til voldlige holdninger. Forebyggende samtale.',
-        type: typesArr[3].name,
-        imgUrl: typesArr[3].imgUrl,
-        alt: typesArr[3].alt,
-        graded: gradedLevelsArr[0].name, 
-        date: utility.formatDate(new Date()), 
-        address:
-            { 
-                streetname: 'Harald Løvenskiolds vei',
-                streetnumber: '36',
-                zip: '0760',
-                place: 'Oslo'
-            }
-    },
-    {
-        id: 4, 
-        status: statusesArr[0].name, 
-        title: 'Strømkutting',
-        desc: 'Strømkutting til leilighet mistenkt med terror.',
-        type: typesArr[1].name,
-        imgUrl: typesArr[1].imgUrl,
-        alt: typesArr[1].alt,
-        graded: gradedLevelsArr[2].name, 
-        date: utility.formatDate(new Date()), 
-        address:
-            { 
-                streetname: 'Lislebyveien',
-                streetnumber: '114',
-                zip: '1619',
-                place: 'Fredrikstad'
-            }
-    },
-    {
-        id: 5, 
-        status: statusesArr[0].name, 
-        title: 'Beskyttelse av kongen',
-        desc: 'Kongen skal holde en tale, og trusselnivået er vurdert til høyt.',
-        type: typesArr[4].name,
-        imgUrl: typesArr[4].imgUrl,
-        alt: typesArr[4].alt,
-        graded: gradedLevelsArr[2].name, 
-        date: utility.formatDate(new Date()), 
-        address:
-            { 
-                streetname: 'Kringlene',
-                streetnumber: '12',
-                zip: '3142',
-                place: 'Tjøme'
-            }
-    },
-    {
-        id: 6, 
-        status: statusesArr[0].name, 
-        title: 'Møte med politiet',
-        desc: 'Politiet trenger rådgiving ang. trusselnivå.',
-        type: typesArr[5].name,
-        imgUrl: typesArr[5].imgUrl,
-        alt: typesArr[5].alt,
-        graded: gradedLevelsArr[0].name, 
-        date: utility.formatDate(new Date()), 
-        address: 
-            { 
-                streetname: 'Porsveien',
-                streetnumber: '5',
-                zip: '5142',
-                place: 'Fyllingsdalen'
-            }
-    },
-    {
-        id: 7, 
-        status: statusesArr[1].name, 
-        title: 'Arrestasjon av gruppe',
-        desc: 'Uteføre arrestasjon av en gruppe mennesker mistenkt for planlegging av terror.',
-        type: typesArr[0].name,
-        imgUrl: typesArr[0].imgUrl,
-        alt: typesArr[0].alt,
-        graded: gradedLevelsArr[1].name, 
-        date: utility.formatDate(new Date()), 
-        address: 
-            { 
-                streetname: 'Gardvegen',
-                streetnumber: '16B',
-                zip: '2615',
-                place: 'Lillehammer'
-            }
-    },
-    {
-        id: 8, 
-        status: statusesArr[1].name, 
-        title: 'Samtale med kjenning',
-        desc: 'Forebyggene samtale med gjenganger.', 
-        type: typesArr[3].name,
-        imgUrl: typesArr[3].imgUrl,
-        alt: typesArr[3].alt,
-        graded: gradedLevelsArr[0].name, 
-        date: utility.formatDate(new Date()), 
-        address: 
-            { 
-                streetname: 'Simon Leinums veg',
-                streetnumber: '15',
-                zip: '7088',
-                place: 'Heimdal'
-            }
-    },
-    {
-        id: 9, 
-        status: statusesArr[1].name,
-        title: 'Samtale med forelder',
-        desc: 'Barnet viser holdninger som kan være skadelig for andre. Forebyggende samtale.',
-        type: typesArr[3].name,
-        imgUrl: typesArr[3].imgUrl,
-        alt: typesArr[3].alt,
-        graded: gradedLevelsArr[0].name, 
-        date: utility.formatDate(new Date()), 
-        address: 
-            { 
-                streetname: 'Myraveien',
-                streetnumber: '3',
-                zip: '8622',
-                place: 'Mo i Rana'
-            }
-    },   
-];
-
+/* array consisting of images of addreses */
 const addressImagesArr = [
     {
         id: 1,
@@ -278,7 +113,191 @@ const addressImagesArr = [
     }
 ];
 
-const personsUnderInvestigationsArr = [];
+/* array of default cards */
+const cardsArr = [
+    {
+        id: 1, 
+        status: statusesArr[0].name, 
+        title: 'Ransaking av leilighet',
+        desc: 'Ransaking av leilighet til kjenning. Mulig terrorlink.',
+        type: typesArr[2].name,
+        imgUrl: typesArr[2].imgUrl,
+        alt: typesArr[2].alt,
+        graded: gradedLevelsArr[0].name, 
+        date: utility.formatDate(new Date()), 
+        address: 
+            { 
+                streetname: 'Hausmansgate', 
+                streetnumber: '21', 
+                zip: '0182', 
+                place: 'Oslo',
+                imgUrl: addressImagesArr[0].imgUrl,
+                imgAlt: addressImagesArr[0].alt,
+            },
+            
+    },
+    {
+        id: 2, 
+        status: statusesArr[0].name, 
+        title: 'Overvåking av person',
+        desc: 'Overvåking og innhenting av informasjon om Navn Navnesen.', 
+        type: typesArr[0].name,
+        imgUrl: typesArr[0].imgUrl,
+        alt: typesArr[0].alt,
+        graded: gradedLevelsArr[1].name, 
+        date: utility.formatDate(new Date()), 
+        address:
+            { 
+                streetname: 'Solheimveien', 
+                streetnumber: '3', 
+                zip: '1473', 
+                place: 'Lørenskog',
+                imgUrl: addressImagesArr[1].imgUrl,
+                imgAlt: addressImagesArr[1].alt,
+            },
+    },
+    {
+        id: 3, 
+        status: statusesArr[0].name, 
+        title: 'Samtale med elev',
+        desc: 'Elev viser tendenser til voldlige holdninger. Forebyggende samtale.',
+        type: typesArr[3].name,
+        imgUrl: typesArr[3].imgUrl,
+        alt: typesArr[3].alt,
+        graded: gradedLevelsArr[0].name, 
+        date: utility.formatDate(new Date()), 
+        address:
+            { 
+                streetname: 'Harald Løvenskiolds vei',
+                streetnumber: '36',
+                zip: '0760',
+                place: 'Oslo',
+                imgUrl: addressImagesArr[2].imgUrl,
+                imgAlt: addressImagesArr[2].alt,
+            },
+    },
+    {
+        id: 4, 
+        status: statusesArr[0].name, 
+        title: 'Strømkutting',
+        desc: 'Strømkutting til leilighet mistenkt med terror.',
+        type: typesArr[1].name,
+        imgUrl: typesArr[1].imgUrl,
+        alt: typesArr[1].alt,
+        graded: gradedLevelsArr[2].name, 
+        date: utility.formatDate(new Date()), 
+        address:
+            { 
+                streetname: 'Lislebyveien',
+                streetnumber: '114',
+                zip: '1619',
+                place: 'Fredrikstad',
+                imgUrl: addressImagesArr[3].imgUrl,
+                imgAlt: addressImagesArr[3].alt,
+            },
+    },
+    {
+        id: 5, 
+        status: statusesArr[0].name, 
+        title: 'Beskyttelse av kongen',
+        desc: 'Kongen skal holde en tale, og trusselnivået er vurdert til høyt.',
+        type: typesArr[4].name,
+        imgUrl: typesArr[4].imgUrl,
+        alt: typesArr[4].alt,
+        graded: gradedLevelsArr[2].name, 
+        date: utility.formatDate(new Date()), 
+        address:
+            { 
+                streetname: 'Kringlene',
+                streetnumber: '12',
+                zip: '3142',
+                place: 'Tjøme',
+                imgUrl: addressImagesArr[4].imgUrl,
+                imgAlt: addressImagesArr[4].alt,
+            },
+    },
+    {
+        id: 6, 
+        status: statusesArr[0].name, 
+        title: 'Møte med politiet',
+        desc: 'Politiet trenger rådgiving ang. trusselnivå.',
+        type: typesArr[5].name,
+        imgUrl: typesArr[5].imgUrl,
+        alt: typesArr[5].alt,
+        graded: gradedLevelsArr[0].name, 
+        date: utility.formatDate(new Date()), 
+        address: 
+            { 
+                streetname: 'Porsveien',
+                streetnumber: '5',
+                zip: '5142',
+                place: 'Fyllingsdalen',
+                imgUrl: addressImagesArr[5].imgUrl,
+                imgAlt: addressImagesArr[5].alt,
+            },
+
+    },
+    {
+        id: 7, 
+        status: statusesArr[1].name, 
+        title: 'Arrestasjon av gruppe',
+        desc: 'Uteføre arrestasjon av en gruppe mennesker mistenkt for planlegging av terror.',
+        type: typesArr[0].name,
+        imgUrl: typesArr[0].imgUrl,
+        alt: typesArr[0].alt,
+        graded: gradedLevelsArr[1].name, 
+        date: utility.formatDate(new Date()), 
+        address: 
+            { 
+                streetname: 'Gardvegen',
+                streetnumber: '16B',
+                zip: '2615',
+                place: 'Lillehammer',
+                imgUrl: addressImagesArr[6].imgUrl,
+                imgAlt: addressImagesArr[6].alt,
+            },
+    },
+    {
+        id: 8, 
+        status: statusesArr[1].name, 
+        title: 'Samtale med kjenning',
+        desc: 'Forebyggene samtale med gjenganger.', 
+        type: typesArr[3].name,
+        imgUrl: typesArr[3].imgUrl,
+        alt: typesArr[3].alt,
+        graded: gradedLevelsArr[0].name, 
+        date: utility.formatDate(new Date()), 
+        address: 
+            { 
+                streetname: 'Simon Leinums veg',
+                streetnumber: '15',
+                zip: '7088',
+                place: 'Heimdal',
+                imgUrl: addressImagesArr[4].imgUrl,
+                imgAlt: addressImagesArr[4].alt,
+            },
+    },
+    {
+        id: 9, 
+        status: statusesArr[1].name,
+        title: 'Samtale med forelder',
+        desc: 'Barnet viser holdninger som kan være skadelig for andre. Forebyggende samtale.',
+        type: typesArr[3].name,
+        imgUrl: typesArr[3].imgUrl,
+        alt: typesArr[3].alt,
+        graded: gradedLevelsArr[0].name, 
+        date: utility.formatDate(new Date()), 
+        address: 
+            { 
+                streetname: 'Myraveien',
+                streetnumber: '3',
+                zip: '8622',
+                place: 'Mo i Rana',
+                imgUrl: addressImagesArr[3].imgUrl,
+                imgAlt: addressImagesArr[3].alt,
+            }
+    },   
+];
 
 
 /* conditional check to check if browser supports localstorage */
@@ -303,7 +322,14 @@ if (typeof(Storage) !== 'undefined') {
 
         /* if it doesn't, create statuses */
         localStorage.setItem('statuses', JSON.stringify(statusesArr));
-    } 
+    }
+    
+    /* conditional check to check if the addressImages key already exists in storage */
+    if (localStorage.getItem('addressImages') === null) {
+
+        /* if it doesn't, create addressImages */
+        localStorage.setItem('addressImages', JSON.stringify(addressImagesArr));
+    }
     
     /* conditional check to check if the cards key already exists in storage */
     if (localStorage.getItem('cards') === null) {
@@ -317,6 +343,7 @@ if (typeof(Storage) !== 'undefined') {
     let types = utility.getAndParse('types');
     let gradedLevels = utility.getAndParse('gradedLevels');
     let statuses = utility.getAndParse('statuses');
+    let criminals = utility.getAndParse('criminals');
 
     /* conditional check to only run block of code on specific pages */
     /* check if body has the class 'overview' */
@@ -357,7 +384,7 @@ if (typeof(Storage) !== 'undefined') {
             let card = new Card(item.id, item.status, item.title, item.desc, item.type, item.imgUrl, item.alt, item.graded, item.date, item.address);
 
             /* generate edit view with card details */
-            utility.generateEditPage(card, 'section.container', types, gradedLevels, statuses, cards);
+            utility.generateEditPage(card, 'section.container', types, gradedLevels, statuses, cards, criminals);
         }
 
     /* else if the body has the class 'cases' */

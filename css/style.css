@@ -1098,6 +1098,28 @@ select:focus {
 * Body (> 375px): F
 ***************************************************************************/
 
+/* styling for displaying image within form */
+.form-address-img {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  height: 10rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+.form-criminal-section {
+  display: flex;
+}
+
+.form-criminal-img {
+  border: 1px solid #CBD5E0;
+  border-radius: 9999px;
+  height: 4.5rem;
+  object-fit: cover;
+  margin-right: 0.5rem;
+  width: 4.5rem;
+}
+
 /* styling for "Kort ble opprettet xx.xx.xxxx xx:xx" at the end of forms */
 .form-meta-text {
   color: #718096;

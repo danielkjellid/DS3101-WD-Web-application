@@ -8,7 +8,13 @@ class Utility {
         this.name = name;
     }
 
-    getRandomArbitrary = (min, max) => { return Math.random() * (max-min) + min; }
+    /* this method is used for generating a random integer between two values */
+    /* it will be marger than min, but less than (not equal to) max */
+    getRandomArbitrary = (min, max) => { 
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max-min)) + min;
+    }
 
     /* this method is used to format the datetime by adding '0' before int if the int is singular */
     /* This means that the output becomes 01:00 isntead of 1:1 */
@@ -144,6 +150,8 @@ class Utility {
                 maxId = obj.id;
             }
         });
+        let addressImgs = this.getAndParse('addressImages');
+        let addressImgInt = this.getRandomArbitrary(0, addressImgs.length)
 
         /* gather values from form */
         let statusValue = $('select#status-select').val();
@@ -157,8 +165,8 @@ class Utility {
         let streetNumberValue = $('input#streetnumber').val();
         let zipValue = $('input#zip').val();
         let placeValue = $('input#place').val();
-        let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue};
-
+        let addressValue = {streetname: streetNameValue, streetnumber: streetNumberValue, zip: zipValue, place: placeValue, imgUrl: addressImgs[addressImgInt].imgUrl, imgAlt: addressImgs[addressImgInt].alt};
+        
         /* create and replace temporary storage object (card) with details from form, adding an ID with +1 */
         this.createTempStorage(maxId+1, statusValue, titleValue, descValue, typeValue, imgUrlValue, altValue, gradedLevelValue, this.formatDate(new Date()), addressValue);
 
@@ -226,10 +234,10 @@ class Utility {
 
     /* temporary storage method is used to create a temporary object in local storage. */
     /* this is to be able to grab specific card details when editing card in edit.html */
-    createTempStorage(id, status, title, desc, type, imgUrl, alt, gradedLevel, date, address) {
+    createTempStorage(id, status, title, desc, type, imgUrl, alt, gradedLevel, date, address, persons) {
 
         /* create new card object */
-        let card = new Card(id, status, title, desc, type, imgUrl, alt, gradedLevel, date, address);
+        let card = new Card(id, status, title, desc, type, imgUrl, alt, gradedLevel, date, address, persons);
 
         /* check if card object already exists in localstorage */
         if (localStorage.getItem('card') === null) {
@@ -446,6 +454,7 @@ class Utility {
                                             <textarea class="desc w-1" id="desc" placeholder="Beskrivelse">${obj.getDesc()}</textarea>
                                         </div>
                                     </div>
+        
                                     <div class="form-section address-section">
                                         <div class="form-group street-group">
                                             <div class="flex w-1">
@@ -470,6 +479,10 @@ class Utility {
                                                     <input class="w-1 place" type="text" id="place" placeholder="Poststed" value="${obj.getPlace()}">
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="form-address-image">Bilde</label>
+                                            <img id="form-address-image" class="form-address-img" src="${obj.getAddressImg()}" alt="${obj.getAddressImgAlt()}">
                                         </div>
                                     </div>
                                     <div class="form-section">
@@ -639,7 +652,8 @@ class Utility {
         });
 
         /* event handler for submitting form */
-        $('#add-form').submit(function() {
+        $('#add-form').submit(function(e) {
+            e.preventDefault();
             addCard(); /* runs addCard function/metod */
         });
     }
@@ -719,6 +733,10 @@ class Utility {
                                                                 <input class="w-1 place" type="text" id="place" placeholder="Poststed" value="${obj.getPlace()}">
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="form-address-image">Bilde</label>
+                                                        <img id="form-address-image" class="form-address-img" src="${obj.getAddressImg()}" alt="${obj.getAddressImgAlt()}">
                                                     </div>
                                                 </div>
                                                 <div class="form-section">

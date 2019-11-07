@@ -1,7 +1,7 @@
 class Card {
 
     /* Card constructor */
-    constructor(id, status, title, desc, type, imgUrl, alt, graded, date, address) {
+    constructor(id, status, title, desc, type, imgUrl, alt, graded, date, address, persons) {
         this.id = id;
         this.status = status;
         this.title = title;
@@ -73,6 +73,14 @@ class Card {
 
     getPlace() {
         return this.address.place;
+    }
+
+    getAddressImg() {
+        return this.address.imgUrl;
+    }
+
+    getAddressImgAlt() {
+        return this.address.imgAlt;
     }
 
     /* set methods */
