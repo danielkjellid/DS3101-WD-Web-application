@@ -597,7 +597,8 @@ select:focus {
 /* hamburger menu on small devices */
 .header-item .menu-btn {
 	height: auto;
-	fill: #F7FAFC;
+  fill: #F7FAFC;
+  padding: 1rem;
 	width: 1.5rem;
 }
 
