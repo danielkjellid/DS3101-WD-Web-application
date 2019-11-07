@@ -735,6 +735,10 @@ main {
 * Body (> 375px): B
 **************************************************************************/
 
+.banner {
+  padding-top: 4.5rem;
+}
+
 /* annimation for fading in banner items */
 .banner-animation {
   animation-name: fadeIn;
