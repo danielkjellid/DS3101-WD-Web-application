@@ -8,6 +8,8 @@ class Utility {
         this.name = name;
     }
 
+    getRandomArbitrary = (min, max) => { return Math.random() * (max-min) + min; }
+
     /* this method is used to format the datetime by adding '0' before int if the int is singular */
     /* This means that the output becomes 01:00 isntead of 1:1 */
     formatDateTime = (time) => { return ('0' + time).slice(-2); }

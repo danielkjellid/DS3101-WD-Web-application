@@ -240,6 +240,47 @@ const cardsArr = [
     },   
 ];
 
+const addressImagesArr = [
+    {
+        id: 1,
+        imgUrl: './img/addresses/1.jpg',
+        alt: 'Hvit slitent hus',
+    },
+    {
+        id: 2,
+        imgUrl: './img/addresses/2.jpg',
+        alt: 'Gul skole med lekestativ i fokus',
+    },
+    {
+        id: 3,
+        imgUrl: './img/addresses/3.jpg',
+        alt: 'Fallerferdig forlatt hvit tomannsbolig',
+    },
+    {
+        id: 4,
+        imgUrl: './img/addresses/4.jpg',
+        alt: 'Nybygd hvit funkisvilla oppå en skrent',
+    },
+    {
+        id: 5,
+        imgUrl: './img/addresses/5.jpg',
+        alt: 'Gul bygård på en hjørne'
+    },
+    {
+        id: 6,
+        imgUrl: './img/addresses/6.jpg',
+        alt: 'Gult bygg med bakeri i førsteetasjen'
+    },
+    {
+        id: 7,
+        imgUrl: './img/addresses/7.jpg',
+        alt: 'Eldre rekkehus med bar i førsteetasjen'
+    }
+];
+
+const personsUnderInvestigationsArr = [];
+
+
 /* conditional check to check if browser supports localstorage */
 if (typeof(Storage) !== 'undefined') {
 
