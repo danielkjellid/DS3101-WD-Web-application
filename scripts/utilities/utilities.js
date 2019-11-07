@@ -55,7 +55,7 @@ class Utility {
 
     /* method for opening and closing the burger menu on small devices */
     /* functions by adding the 'block' class to nav with class nav, and removes/adds the 'hidden' class form the nav if it exists */
-    toggleMenu = () => {
+    toggleMenu() {
 
         /* conditional check to figure out wheter to add or remove 'hidden' and replacing it with 'block', or the other way around */
         if ($('nav.nav').hasClass('hidden')) {
