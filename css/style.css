@@ -470,6 +470,10 @@ select:focus {
   outline: 0;
 }
 
+main {
+  z-index: 2;
+}
+
 /* ==========================================================================
 ** Utilitclasses > X
 ** ========================================================================== */
@@ -576,7 +580,11 @@ select:focus {
 .header {
 	background-color: #2D3748;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
 }
 
 /* item within header element */
@@ -1321,6 +1329,10 @@ select:focus {
   background-color: #FFFFFF;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   margin-bottom: 1rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 4.5rem;
 }
 
 /**************************************************************************
@@ -1486,7 +1498,7 @@ select:focus {
 	background-color: #2D3748;
 	text-align: center;
   padding: 1rem;
-  margin-top: 1rem
+  margin-top: 1rem;
 }
 
 .footer span {
